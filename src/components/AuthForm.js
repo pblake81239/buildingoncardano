@@ -4,6 +4,17 @@ import React from 'react';
 import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
 
 class AuthForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: "",
+      password: "",
+      confirmPassword: ""
+
+    };
+  }
+
+
   get isLogin() {
     return this.props.authState === STATE_LOGIN;
   }
@@ -20,6 +31,15 @@ class AuthForm extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    var authState = this.props.authState;
+    var email = this.state.email;
+    var password = this.state.password;
+    if (authState == 'SIGNUP') {
+      var confirmPassword = this.state.confirmPassword;
+    } else {
+      //login
+    }
+
   };
 
   renderButtonText() {
@@ -64,16 +84,16 @@ class AuthForm extends React.Component {
         )}
         <FormGroup>
           <Label for={usernameLabel}>{usernameLabel}</Label>
-          <Input {...usernameInputProps} />
+          <Input {...usernameInputProps}  onChange={e => this.setState({ email: e.target.value })} value={this.state.email}/>
         </FormGroup>
         <FormGroup>
           <Label for={passwordLabel}>{passwordLabel}</Label>
-          <Input {...passwordInputProps} />
+          <Input {...passwordInputProps} onChange={e => this.setState({ password: e.target.value })} value={this.state.password}/>
         </FormGroup>
         {this.isSignup && (
           <FormGroup>
             <Label for={confirmPasswordLabel}>{confirmPasswordLabel}</Label>
-            <Input {...confirmPasswordInputProps} />
+            <Input {...confirmPasswordInputProps} onChange={e => this.setState({ confirmPassword: e.target.value })} value={this.state.confirmPassword}/>
           </FormGroup>
         )}
         <FormGroup check>
@@ -145,7 +165,7 @@ AuthForm.defaultProps = {
     type: 'password',
     placeholder: 'confirm your password',
   },
-  onLogoClick: () => {},
+  onLogoClick: () => { },
 };
 
 export default AuthForm;

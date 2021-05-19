@@ -17,20 +17,53 @@ import {
   Table
 } from 'reactstrap';
 import { getColor } from 'utils/colors';
+import BeatLoader
+  from "react-spinners/BeatLoader";
+import { css } from "@emotion/core";
+import { baseUrl, getAllProjects, getProjectsStats } from '../assets/services';
 
-const today = new Date();
-const lastWeek = new Date(
-  today.getFullYear(),
-  today.getMonth(),
-  today.getDate() - 7,
-);
-const tableTypes = ['', 'bordered', 'striped', 'hover'];
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+`;
 
 class DashboardPage extends React.Component {
+  state = {
+    projects: null,
+    loading: true,
+    totalProjects: '',
+    projectTypesAndCount: []
+  };
+
   componentDidMount() {
-    // this is needed, because InfiniteCalendar forces window scroll
-    window.scrollTo(0, 0);
+    this.getProjectsStats();
+    this.getAllProjects();
   }
+
+  async getAllProjects() {
+    try {
+      var response = await fetch(baseUrl + getAllProjects);
+      const data = await response.json();
+      console.log(data);
+      this.setState({ projects: data, loading: false })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  async getProjectsStats() {
+    try {
+      var response = await fetch(baseUrl + getProjectsStats);
+      const data = await response.json();
+      console.log(data);
+      var projectTypesAndCount = data.projectTypesAndCount;
+      this.setState({ totalProjects: data.totalProjects, projectTypesAndCount: projectTypesAndCount })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
 
   render() {
     const primaryColor = getColor('primary');
@@ -45,27 +78,36 @@ class DashboardPage extends React.Component {
         <Row>
           <Col lg={3} md={6} sm={6} xs={12}>
             <NumberWidget
-              title="Total Profit"
-              subtitle="This month"
-              number="9.8k"
+              title="Total Projects"
+              number={this.state.totalProjects}
               color="secondary"
-              progress={{
-                value: 75,
-                label: 'Last month',
-              }}
             />
           </Col>
+          </Row>
+          {/* <Row>
+  
+            {this.state.loading ? <div>Loading projects...<BeatLoader loading={this.state.loading} css={override} size={180} /></div>
+              :
+              this.state.projectTypesAndCount.map(function (item, index) {
+                return (
+                  <Col lg={3} md={6} sm={6} xs={12}>
+                  <NumberWidget
+                    title="Total Projects"
+                    number="1"
+                    color="secondary"
+                  />
+                </Col>
+                )
 
-          <Col lg={3} md={6} sm={6} xs={12}>
+              })
+            }
+
+
+          {/* <Col lg={3} md={6} sm={6} xs={12}>
             <NumberWidget
-              title="Monthly Visitors"
-              subtitle="This month"
-              number="5,400"
+              title="Der"
+              number="9.8k"
               color="secondary"
-              progress={{
-                value: 45,
-                label: 'Last month',
-              }}
             />
           </Col>
 
@@ -93,56 +135,51 @@ class DashboardPage extends React.Component {
                 label: 'Last month',
               }}
             />
-          </Col>
-        </Row>
+          </Col>    /</Row> */}
+     
 
         <Row>
-          {/* <Col lg="3" md="12" sm="12" xs="12">
-            <Card>
-              <CardHeader>
-                Projects Reported{' '}
-                <small className="text-muted text-capitalize">This year</small>
-              </CardHeader>
-              <CardBody>
-                <Line data={chartjs.line.data} options={chartjs.line.options} />
-              </CardBody>
-            </Card>
-          </Col> */}
-
           <Col lg="12" md="12" sm="12" xs="12">
             <Card>
               <CardHeader>Projects</CardHeader>
               <CardBody>
-              <Table {...{ ['bordered']: true }}>
-                        <thead>
-                          <tr>
-                            <th>#</th>
-                            <th>Project</th>
-                            <th>Type</th>
-                            <th>Token Type</th>
-                            <th>Ticker</th>
-                            <th>Stage</th>
-                          </tr>
-                        </thead>
-                        <tbody>
+                <Table {...{ ['bordered']: true }}>
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Project</th>
+                      <th>Type</th>
+                      <th>Token Type</th>
+                      <th>Ticker</th>
+                      <th>Stage</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {this.state.loading ? <div>Loading projects...<BeatLoader loading={this.state.loading} css={override} size={180} /></div>
+                      :
+                      this.state.projects.map(function (item, index) {
+                        return (
                           <tr onClick={() => console.log("clicked")}>
                             <th scope="row">1</th>
-                            <td>SundaeSwap</td>
-                            <td>Defi</td>
-                            <td>Something</td>
-                            <td>Sun</td>
-                            <td>Dunno</td>
+                            <td>{item.name}</td>
+                            <td>{item.type}</td>
+                            <td>{item.tokenType}</td>
+                            <td>{item.ticker}</td>
+                            <td>{item.stage}</td>
                           </tr>
+                        )
 
-                        </tbody>
-                      </Table>
+                      })
+                    }
+                  </tbody>
+                </Table>
               </CardBody>
 
             </Card>
           </Col>
         </Row>
 
-        
+
       </Page>
     );
   }

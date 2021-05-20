@@ -25,7 +25,7 @@ class App extends React.Component {
   render() {
     return (
       <BrowserRouter basename={getBasename()}>
-        <GAListener>
+        {/* <GAListener> */}
           <Switch>
             <LayoutRoute
               exact
@@ -68,7 +68,7 @@ class App extends React.Component {
             </MainLayout>
             <Redirect to="/" />
           </Switch>
-        </GAListener>
+        {/* </GAListener> */}
       </BrowserRouter>
     );
   }

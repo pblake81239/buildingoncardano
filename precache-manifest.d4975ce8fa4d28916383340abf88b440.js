@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "b8d9da91db59222d0bcedcd42302ca41",
+    "revision": "b173444e42d0a135e242979c7041d78b",
     "url": "https://reduction-admin.github.io/react-reduction/index.html"
   },
   {
-    "revision": "c56151da89842218ee93",
+    "revision": "6a9da2a93343da832cce",
     "url": "https://reduction-admin.github.io/react-reduction/static/css/main.6a7cf092.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "https://reduction-admin.github.io/react-reduction/static/js/2.17683427.chunk.js"
   },
   {
-    "revision": "c56151da89842218ee93",
-    "url": "https://reduction-admin.github.io/react-reduction/static/js/main.93dfef44.chunk.js"
+    "revision": "6a9da2a93343da832cce",
+    "url": "https://reduction-admin.github.io/react-reduction/static/js/main.e1568dba.chunk.js"
   },
   {
     "revision": "ebacf028a0bb3d438457",

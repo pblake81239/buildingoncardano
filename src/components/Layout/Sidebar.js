@@ -27,7 +27,8 @@ import {
   MdWidgets,
   MdSettingsApplications,
   MdPanTool,
-  MdAccountBalanceWallet
+  MdAccountBalanceWallet,
+  MdKeyboardArrowRight
 
 } from 'react-icons/md';
 import { NavLink } from 'react-router-dom';
@@ -70,9 +71,12 @@ const navComponents = [
 ];
 
 const pageContents = [
-  { to: '/applications', name: 'Applications', exact: true, Icon: MdSettingsApplications },
-  { to: '/tooling', name: 'Tooling', exact: true, Icon: MdPanTool },
-  { to: '/wallet', name: 'Wallet', exact: true, Icon: MdAccountBalanceWallet },
+  { to: '/defi', name: 'Defi', exact: true, Icon: MdKeyboardArrowRight },
+  { to: '/application', name: 'Application', exact: true, Icon: MdKeyboardArrowRight },
+  { to: '/tooling', name: 'tooling', exact: true, Icon: MdKeyboardArrowRight },
+  { to: '/wallet', name: 'Wallet', exact: true, Icon: MdKeyboardArrowRight },
+  { to: '/data', name: 'Data', exact: true, Icon: MdKeyboardArrowRight },
+  { to: '/nft', name: 'Nft', exact: true, Icon: MdKeyboardArrowRight },
 ];
 
 const navItemsTop = [

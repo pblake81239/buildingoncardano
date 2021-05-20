@@ -83,8 +83,8 @@ class DashboardPage extends React.Component {
               color="secondary"
             />
           </Col>
-          </Row>
-          {/* <Row>
+        </Row>
+        {/* <Row>
   
             {this.state.loading ? <div>Loading projects...<BeatLoader loading={this.state.loading} css={override} size={180} /></div>
               :
@@ -136,43 +136,46 @@ class DashboardPage extends React.Component {
               }}
             />
           </Col>    /</Row> */}
-     
+
 
         <Row>
           <Col lg="12" md="12" sm="12" xs="12">
             <Card>
               <CardHeader>Projects</CardHeader>
               <CardBody>
-                <Table {...{ ['bordered']: true }}>
-                  <thead>
-                    <tr>
-                      <th>#</th>
-                      <th>Project</th>
-                      <th>Type</th>
-                      <th>Token Type</th>
-                      <th>Ticker</th>
-                      <th>Stage</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {this.state.loading ? <div>Loading projects...<BeatLoader loading={this.state.loading} css={override} size={180} /></div>
-                      :
-                      this.state.projects.map(function (item, index) {
-                        return (
-                          <tr onClick={() => console.log("clicked")}>
-                            <th scope="row">1</th>
-                            <td>{item.name}</td>
-                            <td>{item.type}</td>
-                            <td>{item.tokenType}</td>
-                            <td>{item.ticker}</td>
-                            <td>{item.stage}</td>
-                          </tr>
-                        )
+                {this.state.loading ? <div>Loading projects...<BeatLoader loading={this.state.loading} css={override} size={180} /></div>
+                  :
+                  <Table {...{ ['bordered']: true }}>
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Project</th>
+                        <th>Type</th>
+                        <th>Token Type</th>
+                        <th>Ticker</th>
+                        <th>Stage</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {this.state.loading ? <div>Loading projects...<BeatLoader loading={this.state.loading} css={override} size={180} /></div>
+                        :
+                        this.state.projects.map(function (item, index) {
+                          return (
+                            <tr onClick={() => console.log("clicked")}>
+                              <th scope="row">{item.id}</th>
+                              <td>{item.name}</td>
+                              <td>{item.type}</td>
+                              <td>{item.tokenType}</td>
+                              <td>{item.ticker}</td>
+                              <td>{item.stage}</td>
+                            </tr>
+                          )
 
-                      })
-                    }
-                  </tbody>
-                </Table>
+                        })
+                      }
+                    </tbody>
+                  </Table>
+                }
               </CardBody>
 
             </Card>

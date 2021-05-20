@@ -8,20 +8,11 @@ import componentQueries from 'react-component-queries';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import './styles/reduction.scss';
 
-import AlertPage from 'pages/AlertPage';
+
 import AuthModalPage from 'pages/AuthModalPage';
-import BadgePage from 'pages/BadgePage';
 import ButtonGroupPage from 'pages/ButtonGroupPage';
-import ButtonPage from'pages/ButtonPage';
-import ChartPage from 'pages/ChartPage';
 import DashboardPage from 'pages/DashboardPage';
-import DropdownPage from 'pages/DropdownPage';
-import FormPage from 'pages/FormPage';
-import InputGroupPage from 'pages/InputGroupPage';
-import ModalPage from 'pages/ModalPage';
-import ProgressPage from 'pages/ProgressPage';
-import TablePage from 'pages/TablePage';
-import TypographyPage from 'pages/TypographyPage';
+import ProjectsPage from 'pages/ProjectsPage';
 
 const getBasename = () => {
   return `/${process.env.PUBLIC_URL.split('/').pop()}`;
@@ -53,6 +44,14 @@ class App extends React.Component {
             <MainLayout breakpoint={this.props.breakpoint}>
               <React.Suspense fallback={<PageSpinner />}>
                 <Route exact path="/" component={DashboardPage} />
+
+                <Route exact path="/defi" render={(props) => <ProjectsPage {...props}   projectType="defi"/>} />
+                <Route exact path="/application" component={ProjectsPage} />
+                <Route exact path="/tooling" component={ProjectsPage} />
+                <Route exact path="/wallet" component={ProjectsPage} />
+                <Route exact path="/data" component={ProjectsPage} />
+                <Route exact path="/nft" component={ProjectsPage} />
+
                 <Route exact path="/login-modal" component={AuthModalPage} />
                 <Route
                   exact

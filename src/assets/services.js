@@ -8,5 +8,6 @@ export const login = "/login/user";
 //projects
 export const createProject = "/projects/create";
 export const getAllProjects = "/projects/all";
-export const getProjectDetails = "/projects/details/";//{projectId}
+export const getProjectDetailsById = "/projects/details/";//{projectId}
+export const getProjectsByType = "/projects/type/";////{projectType}
 export const getProjectsStats = "/projects/stats";

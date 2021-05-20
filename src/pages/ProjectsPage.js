@@ -102,9 +102,16 @@ class ProjectsPage extends React.Component {
                             {item.name}
                           </CardTitle>
                           <CardText>
-                            {item.desc}
+                            {item.description}
                           </CardText>
-                          <SocialMedia extendedmeta={socialMediaProps} />
+                          <SocialMedia extendedmeta={{
+                            homepage: item.homepage,
+                            twitter_handle: item.twitterHandle,
+                            telegram_handle: item.telegramHandle,
+                            youtube_handle: item.youtubeHandle,
+                            facebook_handle: item.facebookHandle,
+                            discord_handle: item.discordHandle
+                          }} />
                         </Col>
                       </Row>
                     </CardBody>

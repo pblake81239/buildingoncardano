@@ -112,7 +112,8 @@ class ProjectAddPage extends React.Component {
           <ModalHeader toggle={this.toggle()}></ModalHeader>
           <ModalBody>
             <Row>
-              <p>Project Submitted.</p>
+              <p>Project Submitted successfully.</p>
+              <p>We will be reviewing this project for credability and will hope to approve ASAP.</p>
             </Row>
 
           </ModalBody>

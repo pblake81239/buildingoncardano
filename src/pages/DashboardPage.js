@@ -14,19 +14,23 @@ import {
   ListGroup,
   ListGroupItem,
   Row,
-  Table
+  Table 
 } from 'reactstrap';
 import { getColor } from 'utils/colors';
 import BeatLoader
   from "react-spinners/BeatLoader";
 import { css } from "@emotion/core";
 import { baseUrl, getAllProjects, getProjectsStats } from '../assets/services';
+import { Link } from 'react-router-dom';
+import { TableRow } from '@material-ui/core';
 
 const override = css`
   display: block;
   margin: 0 auto;
   border-color: red;
 `;
+
+
 
 class DashboardPage extends React.Component {
   state = {
@@ -161,14 +165,20 @@ class DashboardPage extends React.Component {
                         :
                         this.state.projects.map(function (item, index) {
                           return (
-                            <tr onClick={() => console.log("clicked")}>
+
+
+
+                            <TableRow  component={Link} to={{ pathname: '/projectdetails', state: { projectDetails: item } }}>
+
                               <th scope="row">{item.id}</th>
                               <td>{item.name}</td>
                               <td>{item.type}</td>
                               <td>{item.tokenType}</td>
                               <td>{item.ticker}</td>
                               <td>{item.stage}</td>
-                            </tr>
+
+                            </TableRow >
+
                           )
 
                         })

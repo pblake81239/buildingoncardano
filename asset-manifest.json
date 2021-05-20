@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "https://reduction-admin.github.io/react-reduction/static/css/main.6a7cf092.chunk.css",
+    "main.js": "https://reduction-admin.github.io/react-reduction/static/js/main.8eb6a7ba.chunk.js",
+    "main.js.map": "https://reduction-admin.github.io/react-reduction/static/js/main.8eb6a7ba.chunk.js.map",
+    "runtime~main.js": "https://reduction-admin.github.io/react-reduction/static/js/runtime~main.f524c1eb.js",
+    "runtime~main.js.map": "https://reduction-admin.github.io/react-reduction/static/js/runtime~main.f524c1eb.js.map",
+    "static/js/2.17683427.chunk.js": "https://reduction-admin.github.io/react-reduction/static/js/2.17683427.chunk.js",
+    "static/js/2.17683427.chunk.js.map": "https://reduction-admin.github.io/react-reduction/static/js/2.17683427.chunk.js.map",
+    "index.html": "https://reduction-admin.github.io/react-reduction/index.html",
+    "precache-manifest.8737b988a0e3bb7f713a4f69945a656f.js": "https://reduction-admin.github.io/react-reduction/precache-manifest.8737b988a0e3bb7f713a4f69945a656f.js",
+    "service-worker.js": "https://reduction-admin.github.io/react-reduction/service-worker.js",
+    "static/css/main.6a7cf092.chunk.css.map": "https://reduction-admin.github.io/react-reduction/static/css/main.6a7cf092.chunk.css.map",
+    "static/media/100_4.jpg": "https://reduction-admin.github.io/react-reduction/static/media/100_4.978e51b5.jpg",
+    "static/media/logo_200.png": "https://reduction-admin.github.io/react-reduction/static/media/logo_200.3cd9c77a.png",
+    "static/media/rsz_1sidebar-4.jpg": "https://reduction-admin.github.io/react-reduction/static/media/rsz_1sidebar-4.f7f5fc61.jpg"
+  }
+}

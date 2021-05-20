@@ -9,7 +9,7 @@ const Footer = () => {
     <Navbar>
       <Nav navbar>
         <NavItem>
-          Building On Cardano
+          Building On Cardano - brought to you by Shamrock Pool and Cardano With Paul
         </NavItem>
       </Nav>
     </Navbar>

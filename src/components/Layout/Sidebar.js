@@ -6,29 +6,19 @@ import { FaGithub } from 'react-icons/fa';
 import {
   MdAccountCircle,
   MdArrowDropDownCircle,
-  MdBorderAll,
   MdBrush,
   MdChromeReaderMode,
   MdDashboard,
-  MdExtension,
   MdGroupWork,
-  MdInsertChart,
   MdKeyboardArrowDown,
   MdNotificationsActive,
   MdPages,
   MdRadioButtonChecked,
-  MdSend,
   MdStar,
-  MdTextFields,
-  MdViewCarousel,
   MdViewDay,
   MdViewList,
-  MdWeb,
-  MdWidgets,
-  MdSettingsApplications,
-  MdPanTool,
-  MdAccountBalanceWallet,
-  MdKeyboardArrowRight
+  MdKeyboardArrowRight,
+  MdAddToQueue
 
 } from 'react-icons/md';
 import { NavLink } from 'react-router-dom';
@@ -81,6 +71,7 @@ const pageContents = [
 
 const navItemsTop = [
   { to: '/', name: 'dashboard', exact: true, Icon: MdDashboard },
+  { to: '/addproject', name: 'add project', exact: true, Icon: MdAddToQueue },
 ];
 
 const navItemsBottom = [
@@ -112,12 +103,7 @@ class Sidebar extends React.Component {
         <div className={bem.e('background')} style={sidebarBackground} />
         <div className={bem.e('content')}>
           <Navbar>
-            <SourceLink className="navbar-brand d-flex">
-              {/* <span className="text-white">
-                Building On Cardano 
-              </span> */}
-              <h5 className="text-white">Building On Cardano</h5>
-            </SourceLink>
+            <h5 className="text-white">Building On Cardano</h5>
           </Navbar>
           <Nav vertical>
             {navItemsTop.map(({ to, name, exact, Icon }, index) => (

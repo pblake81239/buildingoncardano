@@ -13,6 +13,7 @@ import AuthModalPage from 'pages/AuthModalPage';
 import ButtonGroupPage from 'pages/ButtonGroupPage';
 import DashboardPage from 'pages/DashboardPage';
 import ProjectsPage from 'pages/ProjectsPage';
+import ProjectDetailsPage from 'pages/ProjectDetailsPage';
 
 const getBasename = () => {
   return `/${process.env.PUBLIC_URL.split('/').pop()}`;
@@ -44,6 +45,7 @@ class App extends React.Component {
             <MainLayout breakpoint={this.props.breakpoint}>
               <React.Suspense fallback={<PageSpinner />}>
                 <Route exact path="/" component={DashboardPage} />
+                <Route exact path="/addproject" render={(props) => <ProjectsPage {...props}   projectType="defi"/>} />
 
                 <Route exact path="/defi" render={(props) => <ProjectsPage {...props}   projectType="defi"/>} />
                 <Route exact path="/application" render={(props) => <ProjectsPage {...props}   projectType="application"/>} />
@@ -51,6 +53,8 @@ class App extends React.Component {
                 <Route exact path="/wallet" render={(props) => <ProjectsPage {...props}   projectType="wallet"/>} />
                 <Route exact path="/data" render={(props) => <ProjectsPage {...props}   projectType="data"/>} />
                 <Route exact path="/nft" render={(props) => <ProjectsPage {...props}   projectType="nft"/>} />
+
+                <Route exact path="/projectdetails" render={(props) => <ProjectDetailsPage {...props} />} />
 
                 <Route exact path="/login-modal" component={AuthModalPage} />
                 <Route

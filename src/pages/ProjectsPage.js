@@ -24,6 +24,7 @@ import { css } from "@emotion/core";
 import { baseUrl, getProjectsByType } from '../assets/services';
 import SocialMedia from '../components/SocialMedia';
 import CardanoImage from 'assets/img/cardanoIcon.png';
+import { Link } from 'react-router-dom'
 
 const socialMediaProps = {
   twitter_handle: '@PoolShamrock',
@@ -78,44 +79,54 @@ class ProjectsPage extends React.Component {
             :
             this.state.projects.map(function (item, index) {
               return (
-                //
-                // id:2
-                // name:'Who knows'
-                // stage:'ISO'
-                // ticker:'12345'
-                // tokenType:'DUNNO'
-                // type:'Defi'
+                //   {
+                //     "id": 1,
+                //     "name": "Poolpeek",
+                //     "type": "Application",
+                //     "tokenType": "DUNNO",
+                //     "ticker": "12345",
+                //     "stage": "ISO",
+                //     "description": null,
+                //     "homepage": null,
+                //     "twitterHandle": null,
+                //     "telegramHandle": null,
+                //     "youtubeHandle": null,
+                //     "facebookHandle": null,
+                //     "discordHandle": null
+                // },
                 <Col lg={3} md={2} sm={2} xs={12} className="mb-3">
-                  <Card >
-                    <CardBody>
-                      <Row>
-                        <Col lg={3} md={2} sm={2} xs={12} className="mb-3">
-                          <img
-                            src={CardanoImage}
-                            className="pr-2"
-                            width="60"
-                            height="60"
-                          />
-                        </Col>
-                        <Col lg={9} md={9} sm={9} xs={9} className="mb-3">
-                          <CardTitle className="text-capitalize">
-                            {item.name}
-                          </CardTitle>
-                          <CardText>
-                            {item.description}
-                          </CardText>
-                          <SocialMedia extendedmeta={{
-                            homepage: item.homepage,
-                            twitter_handle: item.twitterHandle,
-                            telegram_handle: item.telegramHandle,
-                            youtube_handle: item.youtubeHandle,
-                            facebook_handle: item.facebookHandle,
-                            discord_handle: item.discordHandle
-                          }} />
-                        </Col>
-                      </Row>
-                    </CardBody>
-                  </Card>
+                  <Link to={{ pathname: '/projectdetails', state: { projectDetails: item} }}>
+                    <Card style={{ cursor: "pointer" }}>
+                      <CardBody>
+                        <Row>
+                          <Col lg={3} md={2} sm={2} xs={12} className="mb-3">
+                            <img
+                              src={CardanoImage}
+                              className="pr-2"
+                              width="60"
+                              height="60"
+                            />
+                          </Col>
+                          <Col lg={9} md={9} sm={9} xs={9} className="mb-3">
+                            <CardTitle className="text-capitalize">
+                              {item.name}
+                            </CardTitle>
+                            <CardText>
+                              {item.description}
+                            </CardText>
+                            <SocialMedia extendedmeta={{
+                              homepage: item.homepage,
+                              twitter_handle: item.twitterHandle,
+                              telegram_handle: item.telegramHandle,
+                              youtube_handle: item.youtubeHandle,
+                              facebook_handle: item.facebookHandle,
+                              discord_handle: item.discordHandle
+                            }} />
+                          </Col>
+                        </Row>
+                      </CardBody>
+                    </Card>
+                  </Link>
                 </Col>
               )
 

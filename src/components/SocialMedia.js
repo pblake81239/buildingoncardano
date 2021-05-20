@@ -10,6 +10,7 @@ export default class SocialMedia extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            homepage: "",
             twitterHandle: "",
             telegramHandle: "",
             youtubeHandle: "",
@@ -18,6 +19,13 @@ export default class SocialMedia extends React.Component {
         }
     }
     async componentDidMount() {
+
+        //website
+        if (!isEmpty(this.props.extendedmeta.homepage)) {
+            this.state.homepage = this.props.extendedmeta.homepage;
+            this.setState({ homepage: this.props.extendedmeta.homepage });
+        }
+
         //twitter
         if (!isEmpty(this.props.extendedmeta.twitter_handle)) {
             this.state.twitterHandle = this.props.extendedmeta.twitter_handle;
@@ -53,21 +61,21 @@ export default class SocialMedia extends React.Component {
         return (
             <div style={{ display: 'inline-block' }}>
 
-                {/* <Tooltip
-                    title="Pool Website"
+                <Tooltip
+                    title="Website"
                     placement="left"
                 >
-                    <a href={this.props.item.homepage} target="_blank" rel="noreferrer">
+                    <a href={this.state.homepage} target="_blank" rel="noreferrer">
                         <img
                             className="pr-2"
                             alt=""
                         />
-                        <FontAwesomeIcon icon={faGlobe} /></a></Tooltip> */}
+                        <FontAwesomeIcon icon={faGlobe} /></a></Tooltip>
 
 
                 {this.state.twitterHandle !== "" &&
                     <Tooltip
-                        title="Pool Twitter"
+                        title="Twitter"
                         placement="left"
                     >
                         <a href={"https://twitter.com/@" + this.state.twitterHandle} target="_blank" rel="noreferrer">
@@ -79,7 +87,7 @@ export default class SocialMedia extends React.Component {
 
                 {this.state.telegramHandle != "" &&
                     <Tooltip
-                        title="Pool Telegram"
+                        title="Telegram"
                         placement="left"
                     >
                         <a href={"https://t.me/" + this.state.telegramHandle} target="_blank" rel="noreferrer">
@@ -90,7 +98,7 @@ export default class SocialMedia extends React.Component {
 
                 {this.state.youtubeHandle != "" &&
                     <Tooltip
-                        title="Pool Youtube"
+                        title="Youtube"
                         placement="left"
                     >
                         <a href={"https://www.youtube.com/channel/" + this.state.youtubeHandle} target="_blank" rel="noreferrer">
@@ -101,7 +109,7 @@ export default class SocialMedia extends React.Component {
 
                 {this.state.facebookHandle != "" &&
                     <Tooltip
-                        title="Pool Facebook"
+                        title="Facebook"
                         placement="left"
                     >
                         <a href={"https://www.facebook.com/" + this.state.facebookHandle} target="_blank" rel="noreferrer">
@@ -112,7 +120,7 @@ export default class SocialMedia extends React.Component {
 
                 {this.state.discordHandle != "" &&
                     <Tooltip
-                        title="Pool Discord"
+                        title="Discord"
                         placement="left"
                     >
                         <a href={"https://discord.com/invite/" + this.state.discordHandle} target="_blank" rel="noreferrer">

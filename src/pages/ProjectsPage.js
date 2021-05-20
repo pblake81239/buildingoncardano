@@ -102,7 +102,7 @@ class ProjectsPage extends React.Component {
                             {item.name}
                           </CardTitle>
                           <CardText>
-
+                            {item.desc}
                           </CardText>
                           <SocialMedia extendedmeta={socialMediaProps} />
                         </Col>

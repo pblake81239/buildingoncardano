@@ -46,11 +46,11 @@ class App extends React.Component {
                 <Route exact path="/" component={DashboardPage} />
 
                 <Route exact path="/defi" render={(props) => <ProjectsPage {...props}   projectType="defi"/>} />
-                <Route exact path="/application" component={ProjectsPage} />
-                <Route exact path="/tooling" component={ProjectsPage} />
-                <Route exact path="/wallet" component={ProjectsPage} />
-                <Route exact path="/data" component={ProjectsPage} />
-                <Route exact path="/nft" component={ProjectsPage} />
+                <Route exact path="/application" render={(props) => <ProjectsPage {...props}   projectType="application"/>} />
+                <Route exact path="/tooling" render={(props) => <ProjectsPage {...props}   projectType="tooling"/>} />
+                <Route exact path="/wallet" render={(props) => <ProjectsPage {...props}   projectType="wallet"/>} />
+                <Route exact path="/data" render={(props) => <ProjectsPage {...props}   projectType="data"/>} />
+                <Route exact path="/nft" render={(props) => <ProjectsPage {...props}   projectType="nft"/>} />
 
                 <Route exact path="/login-modal" component={AuthModalPage} />
                 <Route

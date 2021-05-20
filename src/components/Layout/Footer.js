@@ -8,9 +8,9 @@ const Footer = () => {
   return (
     <Navbar>
       <Nav navbar>
-        <NavItem>
+        {/* <NavItem>
           Building On Cardano - brought to you by Shamrock Pool and Cardano With Paul
-        </NavItem>
+        </NavItem> */}
       </Nav>
     </Navbar>
   );

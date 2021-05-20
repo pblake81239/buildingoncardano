@@ -24,7 +24,7 @@ import { css } from "@emotion/core";
 import { baseUrl, getProjectsByType } from '../assets/services';
 import SocialMedia from '../components/SocialMedia';
 import CardanoImage from 'assets/img/cardanoIcon.png';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 const socialMediaProps = {
   twitter_handle: '@PoolShamrock',

@@ -9,7 +9,7 @@ import {
 } from 'reactstrap';
 import { Card, Col, Row } from 'reactstrap';
 import { baseUrl, createProject } from '../assets/services';
-
+import { Link } from 'react-router-dom';
 
 class ProjectAddPage extends React.Component {
   state = {
@@ -118,9 +118,11 @@ class ProjectAddPage extends React.Component {
           </ModalBody>
           <ModalFooter>
             {' '}
+            <Link to={{ pathname: '/' }}>
             <Button color="secondary" onClick={this.toggle()}>
               Close
             </Button>
+            </Link>
           </ModalFooter>
         </Modal>
 

@@ -14,6 +14,8 @@ import ButtonGroupPage from 'pages/ButtonGroupPage';
 import DashboardPage from 'pages/DashboardPage';
 import ProjectsPage from 'pages/ProjectsPage';
 import ProjectDetailsPage from 'pages/ProjectDetailsPage';
+import ProjectAddPage from 'pages/ProjectAddPage';
+
 
 const getBasename = () => {
   return `/${process.env.PUBLIC_URL.split('/').pop()}`;
@@ -45,7 +47,7 @@ class App extends React.Component {
             <MainLayout breakpoint={this.props.breakpoint}>
               <React.Suspense fallback={<PageSpinner />}>
                 <Route exact path="/" component={DashboardPage} />
-                <Route exact path="/addproject" render={(props) => <ProjectsPage {...props}   projectType="defi"/>} />
+                <Route exact path="/addproject" render={(props) => <ProjectAddPage {...props} />} />
 
                 <Route exact path="/defi" render={(props) => <ProjectsPage {...props}   projectType="defi"/>} />
                 <Route exact path="/application" render={(props) => <ProjectsPage {...props}   projectType="application"/>} />

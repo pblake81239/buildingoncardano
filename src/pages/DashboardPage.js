@@ -14,7 +14,7 @@ import {
   ListGroup,
   ListGroupItem,
   Row,
-  Table 
+  Table
 } from 'reactstrap';
 import { getColor } from 'utils/colors';
 import BeatLoader
@@ -30,6 +30,7 @@ const override = css`
   border-color: red;
 `;
 
+const width = window.innerWidth;
 
 
 class DashboardPage extends React.Component {
@@ -37,10 +38,16 @@ class DashboardPage extends React.Component {
     projects: null,
     loading: true,
     totalProjects: '',
-    projectTypesAndCount: []
+    projectTypesAndCount: [],
+    smallScreen: false
   };
 
   componentDidMount() {
+
+    if (width < 600) {
+      this.setState({ smallScreen: true });
+    }
+
     this.getProjectsStats();
     this.getAllProjects();
   }
@@ -88,101 +95,82 @@ class DashboardPage extends React.Component {
             />
           </Col>
         </Row>
-        {/* <Row>
-  
-            {this.state.loading ? <div>Loading projects...<BeatLoader loading={this.state.loading} css={override} size={180} /></div>
-              :
-              this.state.projectTypesAndCount.map(function (item, index) {
-                return (
-                  <Col lg={3} md={6} sm={6} xs={12}>
-                  <NumberWidget
-                    title="Total Projects"
-                    number="1"
-                    color="secondary"
-                  />
-                </Col>
-                )
-
-              })
-            }
-
-
-          {/* <Col lg={3} md={6} sm={6} xs={12}>
-            <NumberWidget
-              title="Der"
-              number="9.8k"
-              color="secondary"
-            />
-          </Col>
-
-          <Col lg={3} md={6} sm={6} xs={12}>
-            <NumberWidget
-              title="New Users"
-              subtitle="This month"
-              number="3,400"
-              color="secondary"
-              progress={{
-                value: 90,
-                label: 'Last month',
-              }}
-            />
-          </Col>
-
-          <Col lg={3} md={6} sm={6} xs={12}>
-            <NumberWidget
-              title="Bounce Rate"
-              subtitle="This month"
-              number="38%"
-              color="secondary"
-              progress={{
-                value: 60,
-                label: 'Last month',
-              }}
-            />
-          </Col>    /</Row> */}
-
-
         <Row>
           <Col lg="12" md="12" sm="12" xs="12">
             <Card>
               <CardHeader>Projects</CardHeader>
               <CardBody>
+
+
                 {this.state.loading ? <div>Loading projects...<BeatLoader loading={this.state.loading} css={override} size={180} /></div>
                   :
                   <Table {...{ ['bordered']: true }}>
                     <thead>
-                      <tr>
-                        <th>#</th>
-                        <th>Project</th>
-                        <th>Type</th>
-                        <th>Token Type</th>
-                        <th>Ticker</th>
-                        <th>Stage</th>
-                      </tr>
+                      {this.state.smallScreen ?
+                        <tr>
+                          <th>#</th>
+                          <th>Project</th>
+                          <th>Type</th>
+                        </tr>
+                        :
+                        <tr>
+                          <th>#</th>
+                          <th>Project</th>
+                          <th>Type</th>
+                          <th>Token Type</th>
+                          <th>Ticker</th>
+                          <th>Stage</th>
+                        </tr>}
+
                     </thead>
                     <tbody>
-                      {this.state.loading ? <div>Loading projects...<BeatLoader loading={this.state.loading} css={override} size={180} /></div>
+
+                      {this.state.smallScreen ?
+                        this.state.projects.map(function (item, index) {
+                          return (
+                            <TableRow component={Link} to={{ pathname: '/projectdetails', state: { projectDetails: item } }}>
+
+                              <td scope="row">{item.id}</td>
+                              <td >{item.name}</td>
+                              <td >{item.type}</td>
+
+                            </TableRow >
+                          )
+                        })
+
                         :
                         this.state.projects.map(function (item, index) {
                           return (
-
-
-
-                            <TableRow  component={Link} to={{ pathname: '/projectdetails', state: { projectDetails: item } }}>
-
-                              <th scope="row">{item.id}</th>
-                              <td>{item.name}</td>
-                              <td>{item.type}</td>
+                            <TableRow component={Link} to={{ pathname: '/projectdetails', state: { projectDetails: item } }}>
+                              <td scope="row">{item.id}</td>
+                              <td >{item.name}</td>
+                              <td >{item.type}</td>
                               <td>{item.tokenType}</td>
                               <td>{item.ticker}</td>
                               <td>{item.stage}</td>
 
                             </TableRow >
-
                           )
+                        })}
 
-                        })
-                      }
+                      {/* {this.state.projects.map(function (item, index) {
+                        return (
+                          <TableRow component={Link} to={{ pathname: '/projectdetails', state: { projectDetails: item } }}>
+
+                            {this.state.smallScreen ? <td scope="row">{item.id}</td> : <td scope="row">{item.id}</td>}
+
+                            <td>{item.tokenType}</td>
+                            <td>{item.ticker}</td>
+                            <td>{item.stage}</td>
+
+                          </TableRow >
+                        )
+                      })
+                      } */}
+
+
+
+
                     </tbody>
                   </Table>
                 }

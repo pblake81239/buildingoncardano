@@ -95,38 +95,43 @@ class ProjectsPage extends React.Component {
                 //     "discordHandle": null
                 // },
                 <Col lg={3} md={2} sm={2} xs={12} className="mb-3">
-                  <Link to={{ pathname: '/projectdetails', state: { projectDetails: item} }}>
-                    <Card style={{ cursor: "pointer" }}>
-                      <CardBody>
-                        <Row>
-                          <Col lg={3} md={2} sm={2} xs={12} className="mb-3">
+
+                  <Card style={{ cursor: "pointer", height: '10rem' }}>
+                    <CardBody>
+                      <Row>
+                        <Link to={{ pathname: '/projectdetails', state: { projectDetails: item } }}>
+                        <Col lg={3} md={2} sm={2} xs={12} className="mb-3">
+                          <br></br>
                             <img
                               src={CardanoImage}
                               className="pr-2"
-                              width="60"
-                              height="60"
+                              width="70"
+                              height="70"
                             />
                           </Col>
-                          <Col lg={9} md={9} sm={9} xs={9} className="mb-3">
+                        </Link>
+                        <Col>
+                          <Link to={{ pathname: '/projectdetails', state: { projectDetails: item } }}>
                             <CardTitle className="text-capitalize">
                               {item.name}
                             </CardTitle>
                             <CardText>
-                              {item.description}
+                              {item.type}
                             </CardText>
-                            <SocialMedia extendedmeta={{
-                              homepage: item.homepage,
-                              twitter_handle: item.twitterHandle,
-                              telegram_handle: item.telegramHandle,
-                              youtube_handle: item.youtubeHandle,
-                              facebook_handle: item.facebookHandle,
-                              discord_handle: item.discordHandle
-                            }} />
-                          </Col>
-                        </Row>
-                      </CardBody>
-                    </Card>
-                  </Link>
+                          </Link>
+                          <br></br>
+                          <SocialMedia extendedmeta={{
+                            homepage: item.homepage,
+                            twitter_handle: item.twitterHandle,
+                            telegram_handle: item.telegramHandle,
+                            youtube_handle: item.youtubeHandle,
+                            facebook_handle: item.facebookHandle,
+                            discord_handle: item.discordHandle
+                          }} />
+                        </Col>
+                      </Row>
+                    </CardBody>
+                  </Card>
                 </Col>
               )
 
@@ -136,7 +141,7 @@ class ProjectsPage extends React.Component {
 
         </Row>
 
-      </Page>
+      </Page >
     );
   }
 }

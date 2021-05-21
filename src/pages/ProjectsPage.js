@@ -25,6 +25,7 @@ import { baseUrl, getProjectsByType } from '../assets/services';
 import SocialMedia from '../components/SocialMedia';
 import CardanoImage from 'assets/img/cardanoIcon.png';
 import { Link } from 'react-router-dom';
+import ReactImageFallback from "react-image-fallback";
 
 const socialMediaProps = {
   twitter_handle: '@PoolShamrock',
@@ -100,14 +101,13 @@ class ProjectsPage extends React.Component {
                     <CardBody>
                       <Row>
                         <Link to={{ pathname: '/projectdetails', state: { projectDetails: item } }}>
-                        <Col lg={3} md={2} sm={2} xs={12} className="mb-3">
-                          <br></br>
-                            <img
-                              src={CardanoImage}
-                              className="pr-2"
-                              width="70"
-                              height="70"
-                            />
+                          <Col lg={3} md={2} sm={2} xs={12} className="mb-3">
+                            <br></br>
+                            <ReactImageFallback
+                              src={item.imageUrl}
+                              width="40"
+                              height="40"
+                              fallbackImage={CardanoImage} />
                           </Col>
                         </Link>
                         <Col>

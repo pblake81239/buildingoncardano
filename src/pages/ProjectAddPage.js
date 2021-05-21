@@ -26,6 +26,7 @@ class ProjectAddPage extends React.Component {
     youtubeHandle: null,
     facebookHandle: null,
     discordHandle: null,
+    imageUrl: "",
     modal: false,
     modal_backdrop: false,
     modal_nested_parent: false,
@@ -67,7 +68,8 @@ class ProjectAddPage extends React.Component {
         telegramHandle: this.state.telegramHandle,
         youtubeHandle: this.state.youtubeHandle,
         facebookHandle: this.state.facebookHandle,
-        discordHandle: this.state.discordHandle
+        discordHandle: this.state.discordHandle,
+        imageUrl: this.state.imageUrl
       })
     };
     fetch(baseUrl + createProject, requestOptions)
@@ -161,6 +163,11 @@ class ProjectAddPage extends React.Component {
                     onChange={e => this.setState({ ticker: e.target.value })} />
                 </FormGroup>
                 <FormGroup>
+                  <Label for="name">Token Type</Label>
+                  <Input type="text" name="name" id="name" placeholder=""
+                    onChange={e => this.setState({ tokenType: e.target.value })} />
+                </FormGroup>
+                <FormGroup>
                   <Label for="name">Stage</Label>
                   <Input type="text" name="name" id="name" placeholder=""
                     onChange={e => this.setState({ stage: e.target.value })} />
@@ -201,6 +208,12 @@ class ProjectAddPage extends React.Component {
                   <Label for="description">Description</Label>
                   <Input type="textarea" name="description" id="description"
                     onChange={e => this.setState({ description: e.target.value })} />
+                </FormGroup>
+
+                <FormGroup>
+                  <Label for="name">Project Image Url</Label>
+                  <Input type="text" name="name" id="name" placeholder=""
+                    onChange={e => this.setState({ imageUrl: e.target.value })} />
                 </FormGroup>
 
                 <Button onClick={this.handleSubmit}>Submit</Button>

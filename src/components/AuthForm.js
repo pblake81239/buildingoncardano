@@ -10,6 +10,9 @@ import {
 } from 'reactstrap';
 import { baseUrl, registration, login } from '../assets/services';
 import { Link, Redirect } from "react-router-dom";
+import { setUserSession  } from 'utils/Common.js';
+
+
 class AuthForm extends React.Component {
   constructor(props) {
     super(props);
@@ -57,6 +60,7 @@ class AuthForm extends React.Component {
 
   renderRedirectToDashboard = () => {
     if (this.state.redirectDashoard) {
+      localStorage.setItem('user', this.state.email);
       return <Redirect to={{ pathname: '/', state: { loggedIn: 'loggedIn' } }}/>;
     }
   }
@@ -107,7 +111,7 @@ class AuthForm extends React.Component {
       console.log(status.response);
 
       if (status.response == 'valid_user') {
-        console.log('success!');
+        setUserSession(this.state.email);
         this.setRedirectDashboard();
       }
       else {

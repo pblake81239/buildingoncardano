@@ -31,6 +31,7 @@ import {
   NavLink as BSNavLink,
 } from 'reactstrap';
 import bn from 'utils/bemnames';
+import { getUser  } from 'utils/Common.js';
 
 const sidebarBackground = {
   backgroundImage: `url("${sidebarBgImage}")`,
@@ -69,9 +70,9 @@ const pageContents = [
   { to: '/nft', name: 'Nft', exact: true, Icon: MdKeyboardArrowRight },
 ];
 
-const navItemsTop = [
-  { to: '/', name: 'dashboard', exact: true, Icon: MdDashboard },
-  { to: '/addproject', name: 'add project', exact: true, Icon: MdAddToQueue },
+var navItemsTop = [
+  // { to: '/', name: 'dashboard', exact: true, Icon: MdDashboard },
+  // { to: '/addproject', name: 'add project', exact: true, Icon: MdAddToQueue },
 ];
 
 const navItemsBottom = [
@@ -85,7 +86,27 @@ class Sidebar extends React.Component {
     isOpenComponents: true,
     isOpenContents: true,
     isOpenPages: true,
+    navItemsTop: []
   };
+
+  componentDidMount() {
+    var user = getUser();
+    console.log(user);
+
+    if(user != null){
+      this.setState({navItemsTop : [
+        { to: '/', name: 'dashboard', exact: true, Icon: MdDashboard },
+        { to: '/addproject', name: 'add project', exact: true, Icon: MdAddToQueue },
+      ] })
+      
+    }else{
+      this.setState({navItemsTop : [
+        { to: '/', name: 'dashboard', exact: true, Icon: MdDashboard }
+      ] })
+    }
+  }
+
+
 
   handleClick = name => () => {
     this.setState(prevState => {
@@ -106,7 +127,7 @@ class Sidebar extends React.Component {
             <h5 className="text-white">Building On Cardano</h5>
           </Navbar>
           <Nav vertical>
-            {navItemsTop.map(({ to, name, exact, Icon }, index) => (
+            {this.state.navItemsTop.map(({ to, name, exact, Icon }, index) => (
               <NavItem key={index} className={bem.e('nav-item')}>
                 <BSNavLink
                   id={`navItem-${name}-${index}`}

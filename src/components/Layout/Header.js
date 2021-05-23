@@ -28,6 +28,7 @@ import {
   PopoverBody,
 } from 'reactstrap';
 import bn from 'utils/bemnames';
+import { getUser  } from 'utils/Common.js';
 
 const bem = bn.create('header');
 
@@ -49,6 +50,7 @@ class Header extends React.Component {
     isOpenNotificationPopover: false,
     isNotificationConfirmed: false,
     isOpenUserCardPopover: false,
+    user: null
   };
 
   toggleNotificationPopover = () => {
@@ -74,6 +76,12 @@ class Header extends React.Component {
     document.querySelector('.cr-sidebar').classList.toggle('cr-sidebar--open');
   };
 
+  componentDidMount() {
+    var user = getUser();
+    console.log(user);
+    this.setState({user : user });
+  }
+
   render() {
     const { isNotificationConfirmed } = this.state;
 
@@ -89,6 +97,7 @@ class Header extends React.Component {
         </Nav>
 
         <Nav navbar className={bem.e('nav-right')}>
+          {(this.state.user != null) && (<p>Logged in as: {this.state.user}</p>)}
           {/* <NavItem className="d-inline-flex">
             <NavLink id="Popover1" className="position-relative">
               {isNotificationConfirmed ? (

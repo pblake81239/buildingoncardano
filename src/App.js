@@ -21,6 +21,28 @@ const getBasename = () => {
   return `/${process.env.PUBLIC_URL.split('/').pop()}`;
 };
 
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "LOGIN":
+      localStorage.setItem("user", JSON.stringify(action.payload.user));
+      return {
+        ...state,
+        isAuthenticated: true,
+        user: action.payload.user
+      };
+    case "LOGOUT":
+      localStorage.clear();
+      return {
+        ...state,
+        isAuthenticated: false,
+        user: null
+      };
+    default:
+      return state;
+  }
+};
+
 class App extends React.Component {
   render() {
     return (

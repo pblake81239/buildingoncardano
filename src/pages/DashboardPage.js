@@ -44,7 +44,7 @@ class DashboardPage extends React.Component {
 
   componentDidMount() {
 
-    console.log(this.props.location.state.loggedIn);
+    // console.log(this.props.location.state.loggedIn);
 
     if (width < 600) {
       this.setState({ smallScreen: true });

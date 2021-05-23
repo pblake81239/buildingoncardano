@@ -98,7 +98,7 @@ class DashboardPage extends React.Component {
         <Row>
           <Col lg="12" md="12" sm="12" xs="12">
             <Card>
-              <CardHeader>Projects</CardHeader>
+              {/* <CardHeader>Projects</CardHeader> */}
               <CardBody>
 
 
@@ -108,13 +108,13 @@ class DashboardPage extends React.Component {
                     <thead>
                       {this.state.smallScreen ?
                         <tr>
-                          <th>#</th>
+                          {/* <th>#</th> */}
                           <th>Project</th>
                           <th>Type</th>
                         </tr>
                         :
                         <tr>
-                          <th>#</th>
+                          {/* <th>#</th> */}
                           <th>Project</th>
                           <th>Type</th>
                           <th>Token Type</th>
@@ -130,7 +130,7 @@ class DashboardPage extends React.Component {
                           return (
                             <TableRow component={Link} to={{ pathname: '/projectdetails', state: { projectDetails: item } }}>
 
-                              <td scope="row">{item.id}</td>
+                              {/* <td scope="row">{item.id}</td> */}
                               <td >{item.name}</td>
                               <td >{item.type}</td>
 
@@ -142,13 +142,12 @@ class DashboardPage extends React.Component {
                         this.state.projects.map(function (item, index) {
                           return (
                             <TableRow component={Link} to={{ pathname: '/projectdetails', state: { projectDetails: item } }}>
-                              <td scope="row">{item.id}</td>
+                              {/* <td scope="row">{item.id}</td> */}
                               <td >{item.name}</td>
                               <td >{item.type}</td>
                               <td>{item.tokenType}</td>
                               <td>{item.ticker}</td>
                               <td>{item.stage}</td>
-
                             </TableRow >
                           )
                         })}

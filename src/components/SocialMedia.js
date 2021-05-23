@@ -4,7 +4,10 @@ import { faTwitter, faTelegram, faYoutube, faFacebook, faDiscord } from "@fortaw
 import { faGlobe } from '@fortawesome/free-solid-svg-icons';
 import { isEmpty } from 'utils/stringutil.js';
 import Tooltip from "@material-ui/core/Tooltip";
-
+import {
+    Row,
+    Col
+} from 'reactstrap';
 export default class SocialMedia extends React.Component {
 
     constructor(props) {
@@ -59,20 +62,23 @@ export default class SocialMedia extends React.Component {
 
     render() {
         return (
-            <div style={{ display: 'inline-block' }}>
-
+            <div>
+                <br></br>
+                <br></br>
                 <Tooltip
                     title="Website"
                     placement="left"
                 >
+
                     <a href={this.state.homepage} target="_blank" rel="noreferrer">
                         <img
                             className="pr-2"
                             alt=""
                         />
-                        <FontAwesomeIcon icon={faGlobe} /></a></Tooltip>
+                        <FontAwesomeIcon size="2x" icon={faGlobe} /> Website</a></Tooltip>
 
-
+                <br></br>
+                <br></br>
                 {this.state.twitterHandle !== "" &&
                     <Tooltip
                         title="Twitter"
@@ -82,9 +88,10 @@ export default class SocialMedia extends React.Component {
                             <img
                                 className="pr-2"
                                 alt=""
-                            />
-                            <FontAwesomeIcon icon={faTwitter} /></a></Tooltip>}
-
+                            /><div style={{ display: 'inline-block' }}>
+                                <FontAwesomeIcon size="2x" icon={faTwitter} /> Twitter</div></a></Tooltip>}
+                <br></br>
+                <br></br>
                 {this.state.telegramHandle != "" &&
                     <Tooltip
                         title="Telegram"
@@ -94,8 +101,9 @@ export default class SocialMedia extends React.Component {
                             <img
                                 className="pr-2"
                                 alt=""
-                            /> <FontAwesomeIcon icon={faTelegram} /></a></Tooltip>}
-
+                            /> <FontAwesomeIcon  size="2x"icon={faTelegram} /> Telegram</a></Tooltip>}
+                <br></br>
+                <br></br>
                 {this.state.youtubeHandle != "" &&
                     <Tooltip
                         title="Youtube"
@@ -105,8 +113,9 @@ export default class SocialMedia extends React.Component {
                             <img
                                 className="pr-2"
                                 alt=""
-                            /> <FontAwesomeIcon icon={faYoutube} /></a></Tooltip>}
-
+                            /> <FontAwesomeIcon size="2x" icon={faYoutube} /> Youtube</a></Tooltip>}
+                <br></br>
+                <br></br>
                 {this.state.facebookHandle != "" &&
                     <Tooltip
                         title="Facebook"
@@ -116,8 +125,9 @@ export default class SocialMedia extends React.Component {
                             <img
                                 className="pr-2"
                                 alt=""
-                            /> <FontAwesomeIcon icon={faFacebook} /></a></Tooltip>}
-
+                            /> <FontAwesomeIcon size="2x" icon={faFacebook} /> Facebook</a></Tooltip>}
+                <br></br>
+                <br></br>
                 {this.state.discordHandle != "" &&
                     <Tooltip
                         title="Discord"
@@ -127,7 +137,8 @@ export default class SocialMedia extends React.Component {
                             <img
                                 className="pr-2"
                                 alt=""
-                            /> <FontAwesomeIcon icon={faDiscord} /></a></Tooltip>}
+                            /> <FontAwesomeIcon size="2x" icon={faDiscord} /> Discord</a></Tooltip>}
+
             </div>
         )
     };

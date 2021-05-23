@@ -21,7 +21,7 @@ import { getColor } from 'utils/colors';
 import BeatLoader
   from "react-spinners/BeatLoader";
 import { css } from "@emotion/core";
-import { baseUrl, getProjectsByType } from '../assets/services';
+import ReactImageFallback from "react-image-fallback";
 import SocialMedia from '../components/SocialMedia';
 import CardanoImage from 'assets/img/cardanoIcon.png';
 
@@ -59,38 +59,56 @@ class ProjectDetailsPage extends React.Component {
       <Page
         className="ProjectDetailsPage"
         title="Project Details"
-        breadcrumbs={[{ name: 'Project Details / ' + this.props.location.state.projectDetails.type + ' / '+ this.props.location.state.projectDetails.name, active: true }]}
+        breadcrumbs={[{ name: 'Project Details / ' + this.props.location.state.projectDetails.type + ' / ' + this.props.location.state.projectDetails.name, active: true }]}
       >
-          {this.state.loading ? <div>Loading project...<BeatLoader loading={this.state.loading} css={override} size={180} /></div>
-            :
-            <div>
-              <Col lg={3} md={2} sm={2} xs={12} className="mb-3">
-{/* 
-              description: "This is the description of the project"
-discordHandle: "null"
-facebookHandle: "null"
-homepage: "https://poolpeek.com"
-id: 2
-name: "Poolpeek"
-stage: "ISO"
-telegramHandle: "null"
-ticker: "12345"
-tokenType: "DUNNO"
-twitterHandle: "@PoolShamrock"
-type: "Application"
-youtubeHandle: "null" */}
+        {this.state.loading ? <div>Loading project...<BeatLoader loading={this.state.loading} css={override} size={180} /></div>
+          :
+          <div>
+            <Row
+              style={{
+                height: '100vh',
+                justifyContent: 'center',
+                margin: '20px'
+              }}>
 
-
-                    <p>{this.props.location.state.projectDetails.name}</p>
-                    <p>{this.props.location.state.projectDetails.description}</p>
-                    <p>{this.props.location.state.projectDetails.stage}</p>
-                    <p>{this.props.location.state.projectDetails.tokenType}</p>
-                    <p>{this.props.location.state.projectDetails.type}</p>
-
+              <Col xl={6} lg={12} md={12}>
+                <CardBody>
+                  <Row>
+                    <ReactImageFallback
+                      src={this.props.location.state.projectDetails.imageUrl}
+                      width="120"
+                      height="140"
+                      fallbackImage={CardanoImage} />
+                    <Col>
+                      <h1>{this.props.location.state.projectDetails.name}</h1>
+                      <br></br>
+                      <h5>{this.props.location.state.projectDetails.description}</h5>
+                      <br></br>
+                      <h4>Development Stage:</h4>
+                      <p>{this.props.location.state.projectDetails.stage}</p>
+                      <br></br>
+                      <h4>Project Types:</h4>
+                      <p>{this.props.location.state.projectDetails.type}</p>
+                      <br></br>
+                      <h4>Token:</h4>
+                      <p>{this.props.location.state.projectDetails.tokenType}</p>
+                    </Col>
+                  </Row>
+                </CardBody>
               </Col>
-
-            </div>
-          }
+              <Col md={3} sm={6} xs={12} className="mb-3">
+                <SocialMedia extendedmeta={{
+                  homepage: this.props.location.state.projectDetails.homepage,
+                  twitter_handle: this.props.location.state.projectDetails.twitterHandle,
+                  telegram_handle: this.props.location.state.projectDetails.telegramHandle,
+                  youtube_handle: this.props.location.state.projectDetails.youtubeHandle,
+                  facebook_handle: this.props.location.state.projectDetails.facebookHandle,
+                  discord_handle: this.props.location.state.projectDetails.discordHandle
+                }} />
+              </Col>
+            </Row>
+          </div>
+        }
 
       </Page>
     );

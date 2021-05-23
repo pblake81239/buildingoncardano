@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "608d9fafd71a10bbbc3dc52073fcc7a3",
+    "revision": "ba061fec1564fd0778b98fba7f876d16",
     "url": "https://pblake81239.github.io/buildingoncardano/index.html"
   },
   {
-    "revision": "8960339e7829e4fa623b",
+    "revision": "0ec79200239dfbcbf7c7",
     "url": "https://pblake81239.github.io/buildingoncardano/static/css/main.e5c67c72.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "https://pblake81239.github.io/buildingoncardano/static/js/2.b6aba7a7.chunk.js"
   },
   {
-    "revision": "8960339e7829e4fa623b",
-    "url": "https://pblake81239.github.io/buildingoncardano/static/js/main.05117403.chunk.js"
+    "revision": "0ec79200239dfbcbf7c7",
+    "url": "https://pblake81239.github.io/buildingoncardano/static/js/main.93035318.chunk.js"
   },
   {
     "revision": "ed677ed6e9f1160ecb29",

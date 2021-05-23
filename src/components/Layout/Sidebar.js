@@ -62,7 +62,7 @@ const navComponents = [
 ];
 
 const pageContents = [
-  { to: '/defi', name: 'Defi', exact: true, Icon: MdKeyboardArrowRight },
+  { to: '/projects/defi', name: 'Defi', exact: true, Icon: MdKeyboardArrowRight },
   { to: '/application', name: 'Application', exact: true, Icon: MdKeyboardArrowRight },
   { to: '/tooling', name: 'tooling', exact: true, Icon: MdKeyboardArrowRight },
   { to: '/wallet', name: 'Wallet', exact: true, Icon: MdKeyboardArrowRight },

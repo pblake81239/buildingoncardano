@@ -79,14 +79,12 @@ class DashboardPage extends React.Component {
 
 
   render() {
-    const primaryColor = getColor('primary');
-    const secondaryColor = getColor('secondary');
 
     return (
       <Page
         className="DashboardPage"
         title="Dashboard"
-        breadcrumbs={[{ name: 'Dashboard', active: true }]}
+        breadcrumbs={[{ name: '/', active: true }]}
       >
         <Row>
           <Col lg={3} md={6} sm={6} xs={12}>

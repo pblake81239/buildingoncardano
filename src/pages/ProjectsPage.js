@@ -72,14 +72,14 @@ class ProjectsPage extends React.Component {
       <Page
         className="ProjectsPage"
         title="Projects"
-        breadcrumbs={[{ name: 'Projects / ' + this.props.projectType, active: true }]}
+        breadcrumbs={[{ name: 'Projects/' + this.props.projectType, active: true }]}
       >
         <Row>
           {this.state.loading ? <div>Loading projects...<BeatLoader loading={this.state.loading} css={override} size={180} /></div>
             :
             this.state.projects.map(function (item, index) {
               return (  
-                <Col lg={3} md={2} sm={2} xs={12} className="mb-3">
+                <Col lg={4} md={4} sm={4} xs={12} className="mb-3">
                   <div className='ProjectCards'>
                     <ProjectCard
                       img={item.imageUrl}

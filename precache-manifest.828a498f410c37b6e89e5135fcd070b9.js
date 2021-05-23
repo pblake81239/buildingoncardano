@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ba061fec1564fd0778b98fba7f876d16",
+    "revision": "fb568926a8ae09182e1baaaf4857f49b",
     "url": "https://pblake81239.github.io/buildingoncardano/index.html"
   },
   {

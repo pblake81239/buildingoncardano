@@ -31,7 +31,7 @@ class MainLayout extends React.Component {
 
       this.notificationSystem.addNotification({
         title: <MdImportantDevices />,
-        message: 'Welcome to Building On Cardano!',
+        message: 'Welcome to Building On Cardano! Brought to you by PAUL and SHAMROCK.',
         level: 'info',
       });
     }, 1500);

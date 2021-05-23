@@ -3,7 +3,6 @@ import ReactImageFallback from "react-image-fallback";
 import CardanoImage from 'assets/img/cardanoIcon.png';
 import { Link } from 'react-router-dom';
 import SocialMedia from '../components/SocialMedia';
-
 export default class ProjectCard extends React.Component {
 
     constructor(props) {
@@ -36,6 +35,7 @@ export default class ProjectCard extends React.Component {
         return (
             <div className="ProjectCard" style={{ height: '15rem' }}>
                 <Link to={{ pathname: '/projectdetails', state: { projectDetails: this.props.projectDetails } }}>
+                    <div style={{paddingTop: 15, alignSelf: 'flex-start'}}>
                     <ReactImageFallback
                         src={this.props.img}
                         width="40"
@@ -45,6 +45,7 @@ export default class ProjectCard extends React.Component {
                         <h2>{this.props.projectDetails.name}</h2>
                         <h4>{this.props.projectDetails.description}</h4>
                         <h5>{this.props.projectDetails.type}</h5>
+                    </div>
                     </div>
                 </Link>
             </div>

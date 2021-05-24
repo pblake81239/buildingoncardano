@@ -43,7 +43,7 @@ class DashboardPage extends React.Component {
   };
 
   componentDidMount() {
-
+    window.scrollTo(0, 0);
     // console.log(this.props.location.state.loggedIn);
 
     if (width < 600) {
@@ -104,7 +104,7 @@ class DashboardPage extends React.Component {
 
                 {this.state.loading ? <div>Loading projects...<BeatLoader loading={this.state.loading} css={override} size={180} /></div>
                   :
-                  <Table {...{ ['bordered']: true }}>
+                  <Table>
                     <thead>
                       {this.state.smallScreen ?
                         <tr>
@@ -143,7 +143,11 @@ class DashboardPage extends React.Component {
                           return (
                             <TableRow component={Link} to={{ pathname: '/projectdetails', state: { projectDetails: item } }}>
                               {/* <td scope="row">{item.id}</td> */}
-                              <td >{item.name}</td>
+                              <td > {item.imageUrl != null && (<img
+                                src={item.imageUrl}
+                                className="rounded"
+                                style={{ width: 100, height: 100 }}
+                              />)} {item.name}</td>
                               <td >{item.type}</td>
                               <td>{item.tokenType}</td>
                               <td>{item.ticker}</td>

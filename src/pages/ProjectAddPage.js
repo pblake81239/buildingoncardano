@@ -10,6 +10,27 @@ import {
 import { Card, Col, Row } from 'reactstrap';
 import { baseUrl, createProject } from '../assets/services';
 import { Link } from 'react-router-dom';
+import { Multiselect } from 'multiselect-react-dropdown';
+
+const inputnamewidth = 2;
+const inputfieldwidth = 8;
+
+const tagOptions = [
+  { name: 'Defi', id: 1 },
+  { name: 'Application', id: 2 },
+  { name: 'Tooling', id: 3 },
+  { name: 'Wallet', id: 4 },
+  { name: 'Data', id: 5 },
+  { name: 'Nft', id: 6 },
+]
+
+var selectedValue = [];
+{/* <option>Defi</option>
+<option>Application</option>
+<option>Tooling</option>
+<option>Wallet</option>
+<option>Data</option>
+<option>Nft</option> */}
 
 class ProjectAddPage extends React.Component {
   state = {
@@ -46,39 +67,55 @@ class ProjectAddPage extends React.Component {
   };
 
   componentDidMount() {
-
+    window.scrollTo(0, 0);
   }
 
 
   handleSubmit = event => {
     event.preventDefault();
 
+    var tags = "";
+    //get tags
+    selectedValue.forEach(element => {
+      console.log(element.name);
+      tags += element.name + " ";
+    });
+
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         name: this.state.name,
-        type: this.state.type,
+        type: tags,
+        imageUrl: this.state.imageUrl,
+        homepage: this.state.homepage,
+
         tokenType: this.state.tokenType,
         ticker: this.state.ticker,
         stage: this.state.stage,
         description: this.state.description,
-        homepage: this.state.homepage,
+
         twitterHandle: this.state.twitterHandle,
         telegramHandle: this.state.telegramHandle,
         youtubeHandle: this.state.youtubeHandle,
         facebookHandle: this.state.facebookHandle,
         discordHandle: this.state.discordHandle,
-        imageUrl: this.state.imageUrl
       })
     };
     fetch(baseUrl + createProject, requestOptions)
       .then(response => response.json());
-    // .then(data => this.setState({ postId: data.id }));
 
     console.log("success!");
     this.setState({ modal: true });
   };
+
+  onSelect(selectedList, selectedItem) {
+    selectedValue= selectedList;
+  }
+
+  onRemove(selectedList, removedItem) {
+    selectedValue= selectedList;
+  }
 
   render() {
     return (
@@ -122,8 +159,8 @@ class ProjectAddPage extends React.Component {
           <ModalFooter>
             {' '}
             <Link to={{ pathname: '/' }}>
-            <Button color="secondary" onClick={this.toggle()}>
-              Close
+              <Button color="secondary" onClick={this.toggle()}>
+                Close
             </Button>
             </Link>
           </ModalFooter>
@@ -139,89 +176,123 @@ class ProjectAddPage extends React.Component {
             <Card body>
               <h3>Submit Project</h3>
               <Form>
-                <FormGroup>
-                  <Label for="name">Name</Label>
-                  <Input type="text" name="name" id="name" placeholder=""
-                    onChange={e => this.setState({ name: e.target.value })} />
-                </FormGroup>
                 <br></br>
-                <FormGroup>
-                  <Label for="exampleSelect">Project Type</Label>
-                  <Input type="select" name="select" id="exampleSelect" onChange={e => this.setState({ type: e.target.value })}>
-                    <option></option>
-                    <option>Defi</option>
-                    <option>Application</option>
-                    <option>Tooling</option>
-                    <option>Wallet</option>
-                    <option>Data</option>
-                    <option>Nft</option>
-                  </Input>
+                <h4>Info</h4>
+                <FormGroup row>
+                  <Label for="name" sm={inputnamewidth}>Name</Label>
+                  <Col sm={inputfieldwidth}>
+                    <Input type="text" name="name" id="name" placeholder=""
+                      onChange={e => this.setState({ name: e.target.value })} /></Col>
                 </FormGroup>
-                <FormGroup>
-                  <Label for="name">Ticker</Label>
-                  <Input type="text" name="name" id="name" placeholder=""
-                    onChange={e => this.setState({ ticker: e.target.value })} />
-                </FormGroup>
-                <FormGroup>
-                  <Label for="name">Token Type</Label>
-                  <Input type="text" name="name" id="name" placeholder=""
-                    onChange={e => this.setState({ tokenType: e.target.value })} />
-                </FormGroup>
-                <FormGroup>
-                  <Label for="name">Stage</Label>
-                  <Input type="text" name="name" id="name" placeholder=""
-                    onChange={e => this.setState({ stage: e.target.value })} />
-                </FormGroup>
-                <br></br>
-                <FormGroup>
-                  <Label for="name">Website</Label>
-                  <Input type="text" name="name" id="name" placeholder=""
-                    onChange={e => this.setState({ homepage: e.target.value })} />
-                </FormGroup>
-                <FormGroup>
-                  <Label for="name">Twitter Handle</Label>
-                  <Input type="text" name="name" id="name" placeholder=""
-                    onChange={e => this.setState({ twitterHandle: e.target.value })} />
-                </FormGroup>
-                <FormGroup>
-                  <Label for="name">Telegram Handle</Label>
-                  <Input type="text" name="name" id="name" placeholder=""
-                    onChange={e => this.setState({ telegramHandle: e.target.value })} />
-                </FormGroup>
-                <FormGroup>
-                  <Label for="name">Youtube Handle</Label>
-                  <Input type="text" name="name" id="name" placeholder=""
-                    onChange={e => this.setState({ youtubeHandle: e.target.value })} />
-                </FormGroup>
-                <FormGroup>
-                  <Label for="name">Facebook Handle</Label>
-                  <Input type="text" name="name" id="name" placeholder=""
-                    onChange={e => this.setState({ facebookHandle: e.target.value })} />
-                </FormGroup>
-                <FormGroup>
-                  <Label for="name">Discord</Label>
-                  <Input type="text" name="name" id="name" placeholder=""
-                    onChange={e => this.setState({ discordHandle: e.target.value })} />
-                </FormGroup>
-                <br></br>
-                <FormGroup>
-                  <Label for="description">Description</Label>
-                  <Input type="textarea" name="description" id="description"
-                    onChange={e => this.setState({ description: e.target.value })} />
+                {/* onChange={e => this.s etState({ type: e.target.value })} */}
+                <FormGroup row>
+                  <Label for="exampleSelect" sm={inputnamewidth}>Tags</Label>
+                  <Col sm={inputfieldwidth}>
+                    {/* <Select name="select" id="exampleSelect"
+                      placeholder="nft, dex, protocol, cross chain, Wallet, Oracle, Tooling, Infrastructure"
+                      onChange={this.handleChange} value={this.state.value} multiple={true} options={tagOptions}> */}
+
+                    <Multiselect
+                      options={tagOptions} // Options to display in the dropdown
+                      selectedValues={this.state.selectedValue} // Preselected value to persist in dropdown
+                      onSelect={this.onSelect} // Function will trigger on select event
+                      onRemove={this.onRemove} // Function will trigger on remove event
+                      displayValue="name" // Property name to display in the dropdown options
+                    />
+
+                  </Col>
                 </FormGroup>
 
-                <FormGroup>
-                  <Label for="name">Project Image Url</Label>
-                  <Input type="text" name="name" id="name" placeholder=""
-                    onChange={e => this.setState({ imageUrl: e.target.value })} />
+                <FormGroup row>
+                  <Label for="name" sm={inputnamewidth}>Project Logo Url</Label>
+                  <Col sm={inputfieldwidth}>
+                    <Input type="text" name="name" id="name" placeholder="Add link/Url to project logo"
+                      onChange={e => this.setState({ imageUrl: e.target.value })} /></Col>
                 </FormGroup>
+
+                <FormGroup row>
+                  <Label for="name" sm={inputnamewidth}>Website</Label>
+                  <Col sm={inputfieldwidth}>
+                    <Input type="text" name="name" id="name" placeholder="Website Url"
+                      onChange={e => this.setState({ homepage: e.target.value })} /></Col>
+                </FormGroup>
+
+
+                <FormGroup row>
+                  <Label for="name" sm={inputnamewidth}>Token Type</Label>
+                  <Col sm={inputfieldwidth}>
+                    <Input type="text" name="name" id="name" placeholder="Native Asset, ERC20, BSC, No Token"
+                      onChange={e => this.setState({ tokenType: e.target.value })} /></Col>
+                </FormGroup>
+
+                <FormGroup row>
+                  <Label for="name" sm={inputnamewidth}>Ticker</Label>
+                  <Col sm={inputfieldwidth}>
+                    <Input type="text" name="name" id="name" placeholder=""
+                      onChange={e => this.setState({ ticker: e.target.value })} /></Col>
+                </FormGroup>
+
+                <FormGroup row>
+                  <Label for="name" sm={inputnamewidth}>Stage / Status</Label>
+                  <Col sm={inputfieldwidth}>
+                    <Input type="text" name="name" id="name" placeholder="E.G Pre Funding, Catalyst, Private Sale, Presale, IEO, IDO, ISO, Live on Exchange"
+                      onChange={e => this.setState({ stage: e.target.value })} /></Col>
+                </FormGroup>
+
+                <FormGroup row>
+                  <Label for="description" sm={inputnamewidth}>Description</Label>
+                  <Col sm={inputfieldwidth}>
+                    <Input type="textarea" name="description" id="description"
+                      onChange={e => this.setState({ description: e.target.value })} /></Col>
+                </FormGroup>
+
+                <br></br>
+                <h4>Tokenomics</h4>
+
+
+                <br></br>
+                <h4>Social Media</h4>
+                <FormGroup row>
+                  <Label for="name" sm={inputnamewidth}>Twitter Handle</Label>
+                  <Col sm={inputfieldwidth}>
+                    <Input type="text" name="name" id="name" placeholder=""
+                      onChange={e => this.setState({ twitterHandle: e.target.value })} /></Col>
+                </FormGroup>
+                <FormGroup row>
+                  <Label for="name" sm={inputnamewidth}>Telegram Handle</Label>
+                  <Col sm={inputfieldwidth}>
+                    <Input type="text" name="name" id="name" placeholder=""
+                      onChange={e => this.setState({ telegramHandle: e.target.value })} /></Col>
+                </FormGroup>
+                <FormGroup row>
+                  <Label for="name" sm={inputnamewidth}>Youtube Handle</Label>
+                  <Col sm={inputfieldwidth}>
+                    <Input type="text" name="name" id="name" placeholder=""
+                      onChange={e => this.setState({ youtubeHandle: e.target.value })} /></Col>
+                </FormGroup>
+                <FormGroup row>
+                  <Label for="name" sm={inputnamewidth}>Facebook Handle</Label>
+                  <Col sm={inputfieldwidth}>
+                    <Input type="text" name="name" id="name" placeholder=""
+                      onChange={e => this.setState({ facebookHandle: e.target.value })} /></Col>
+                </FormGroup>
+                <FormGroup row>
+                  <Label for="name" sm={inputnamewidth}>Discord</Label>
+                  <Col sm={inputfieldwidth}>
+                    <Input type="text" name="name" id="name" placeholder=""
+                      onChange={e => this.setState({ discordHandle: e.target.value })} /></Col>
+                </FormGroup>
+                <br></br>
+
+
+
 
                 <Button onClick={this.handleSubmit}>Submit</Button>
               </Form>
             </Card>
           </Col>
         </Row>
-      </Page>
+      </Page >
     );
   }
 }

@@ -111,7 +111,7 @@ class AuthForm extends React.Component {
       console.log(status.response);
 
       if (status.response == 'valid_user') {
-        setUserSession(this.state.email);
+        setUserSession(this.state.email,this.state.password);
         this.setRedirectDashboard();
       }
       else {

@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "dc7b2e0459fea987771254fa2d83404a",
+    "revision": "e8c37bf01031ef72cadc9f7cb60ef79e",
     "url": "https://pblake81239.github.io/buildingoncardano/index.html"
   },
   {
-    "revision": "eec6107e1bdead927942",
-    "url": "https://pblake81239.github.io/buildingoncardano/static/css/main.fd7f8a07.chunk.css"
+    "revision": "781d3f402c12598d0b17",
+    "url": "https://pblake81239.github.io/buildingoncardano/static/css/main.40d7482e.chunk.css"
   },
   {
-    "revision": "4241dddefa0d53eb19f8",
-    "url": "https://pblake81239.github.io/buildingoncardano/static/js/2.41d7627d.chunk.js"
+    "revision": "561f3a97f0ed4cc757c9",
+    "url": "https://pblake81239.github.io/buildingoncardano/static/js/2.f7de93f1.chunk.js"
   },
   {
-    "revision": "eec6107e1bdead927942",
-    "url": "https://pblake81239.github.io/buildingoncardano/static/js/main.72188708.chunk.js"
+    "revision": "781d3f402c12598d0b17",
+    "url": "https://pblake81239.github.io/buildingoncardano/static/js/main.2d2f35cd.chunk.js"
   },
   {
     "revision": "ed677ed6e9f1160ecb29",

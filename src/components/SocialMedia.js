@@ -63,8 +63,6 @@ export default class SocialMedia extends React.Component {
     render() {
         return (
             <div>
-                <br></br>
-                <br></br>
                 <Tooltip
                     title="Website"
                     placement="left"
@@ -77,63 +75,70 @@ export default class SocialMedia extends React.Component {
                         />
                         <FontAwesomeIcon size="2x" icon={faGlobe} /> Website</a></Tooltip>
 
-                <br></br>
-                <br></br>
+
                 {this.state.twitterHandle !== "" &&
+
                     <Tooltip
                         title="Twitter"
                         placement="left"
                     >
+
                         <a href={"https://twitter.com/@" + this.state.twitterHandle} target="_blank" rel="noreferrer">
+                            <br></br>
+                            <br></br>
                             <img
                                 className="pr-2"
                                 alt=""
                             /><div style={{ display: 'inline-block' }}>
                                 <FontAwesomeIcon size="2x" icon={faTwitter} /> Twitter</div></a></Tooltip>}
-                <br></br>
-                <br></br>
+
                 {this.state.telegramHandle != "" &&
                     <Tooltip
                         title="Telegram"
                         placement="left"
                     >
                         <a href={"https://t.me/" + this.state.telegramHandle} target="_blank" rel="noreferrer">
+                            <br></br>
+                            <br></br>
                             <img
                                 className="pr-2"
                                 alt=""
-                            /> <FontAwesomeIcon  size="2x"icon={faTelegram} /> Telegram</a></Tooltip>}
-                <br></br>
-                <br></br>
+                            /> <FontAwesomeIcon size="2x" icon={faTelegram} /> Telegram</a></Tooltip>}
+
                 {this.state.youtubeHandle != "" &&
                     <Tooltip
                         title="Youtube"
                         placement="left"
                     >
                         <a href={"https://www.youtube.com/channel/" + this.state.youtubeHandle} target="_blank" rel="noreferrer">
+                            <br></br>
+                            <br></br>
                             <img
                                 className="pr-2"
                                 alt=""
                             /> <FontAwesomeIcon size="2x" icon={faYoutube} /> Youtube</a></Tooltip>}
-                <br></br>
-                <br></br>
+
                 {this.state.facebookHandle != "" &&
                     <Tooltip
                         title="Facebook"
                         placement="left"
                     >
                         <a href={"https://www.facebook.com/" + this.state.facebookHandle} target="_blank" rel="noreferrer">
+                            <br></br>
+                            <br></br>
                             <img
                                 className="pr-2"
                                 alt=""
                             /> <FontAwesomeIcon size="2x" icon={faFacebook} /> Facebook</a></Tooltip>}
-                <br></br>
-                <br></br>
+
                 {this.state.discordHandle != "" &&
                     <Tooltip
                         title="Discord"
                         placement="left"
                     >
                         <a href={"https://discord.com/invite/" + this.state.discordHandle} target="_blank" rel="noreferrer">
+                            <br></br>
+                            <br></br>
                             <img
                                 className="pr-2"
                                 alt=""

@@ -2,21 +2,12 @@ import Page from 'components/Page';
 import { IconWidget, NumberWidget } from 'components/Widget';
 import React from 'react';
 import {
-  Badge,
-  Button,
   Card,
   CardBody,
-  CardDeck,
-  CardGroup,
-  CardHeader,
-  CardTitle,
   Col,
-  ListGroup,
-  ListGroupItem,
   Row,
   Table
 } from 'reactstrap';
-import { getColor } from 'utils/colors';
 import BeatLoader
   from "react-spinners/BeatLoader";
 import { css } from "@emotion/core";
@@ -100,8 +91,6 @@ class DashboardPage extends React.Component {
             <Card>
               {/* <CardHeader>Projects</CardHeader> */}
               <CardBody>
-
-
                 {this.state.loading ? <div>Loading projects...<BeatLoader loading={this.state.loading} css={override} size={180} /></div>
                   :
                   <Table>

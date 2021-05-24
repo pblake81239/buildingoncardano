@@ -61,55 +61,78 @@ class ProjectDetailsPage extends React.Component {
         title="Project Details"
         breadcrumbs={[{ name: 'Project Details / ' + this.props.location.state.projectDetails.type + ' / ' + this.props.location.state.projectDetails.name, active: true }]}
       >
-        {this.state.loading ? <div>Loading project...<BeatLoader loading={this.state.loading} css={override} size={180} /></div>
-          :
-          <div>
-            <Row
-              style={{
-                height: '100vh',
-                justifyContent: 'center',
-                margin: '20px'
-              }}>
+        <Row
+          style={{
+            height: '100vh',
+            justifyContent: 'center',
+            margin: '20px'
+          }}>
+          <Col xl={6} lg={12} md={12}>
+            <Card>
+              <CardBody>
+                <Row>
+                  <Col>
+                    <h3>Description:</h3>
+                    <h4>{this.props.location.state.projectDetails.description}</h4>
+                    <br></br>
+                    <h3>Development Stage:</h3>
+                    <h4>{this.props.location.state.projectDetails.stage}</h4>
+                    <br></br>
 
-              <Col xl={6} lg={12} md={12}>
-                <CardBody>
-                  <Row>
+                  
+                  </Col>
+                </Row>
+              </CardBody>
+            </Card>
+            <Card>
+              <CardBody>
+                <Row>
+                  <Col>
+                    <h3>Tokenomics:</h3> 
+                    <br></br>
+                    <h3>Token:</h3>
+                    <h4>{this.props.location.state.projectDetails.tokenType}</h4>
+                  </Col>
+                </Row>
+              </CardBody>
+            </Card>
+          </Col>
+          <Col md={3} sm={6} xs={12} className="mb-3">
+            <Row className="m-auto align-self-center">
+              <Col>
+
+                <Card style={{
+                  alignItems: 'center'
+                }}>
+                  <CardBody>
                     <ReactImageFallback
                       src={this.props.location.state.projectDetails.imageUrl}
-                      width="120"
+                      width="140"
                       height="140"
                       fallbackImage={CardanoImage} />
-                    <Col>
-                      <h1>{this.props.location.state.projectDetails.name}</h1>
-                      <br></br>
-                      <h5>{this.props.location.state.projectDetails.description}</h5>
-                      <br></br>
-                      <h4>Development Stage:</h4>
-                      <p>{this.props.location.state.projectDetails.stage}</p>
-                      <br></br>
-                      <h4>Project Types:</h4>
-                      <p>{this.props.location.state.projectDetails.type}</p>
-                      <br></br>
-                      <h4>Token:</h4>
-                      <p>{this.props.location.state.projectDetails.tokenType}</p>
-                    </Col>
-                  </Row>
-                </CardBody>
-              </Col>
-              <Col md={3} sm={6} xs={12} className="mb-3">
-                <SocialMedia extendedmeta={{
-                  homepage: this.props.location.state.projectDetails.homepage,
-                  twitter_handle: this.props.location.state.projectDetails.twitterHandle,
-                  telegram_handle: this.props.location.state.projectDetails.telegramHandle,
-                  youtube_handle: this.props.location.state.projectDetails.youtubeHandle,
-                  facebook_handle: this.props.location.state.projectDetails.facebookHandle,
-                  discord_handle: this.props.location.state.projectDetails.discordHandle
-                }} />
+                    <h2>{this.props.location.state.projectDetails.name}</h2>
+                    <h4>{this.props.location.state.projectDetails.description}</h4>
+                    <h5>{this.props.location.state.projectDetails.type}</h5>
+                  </CardBody>
+                </Card>
+                <Card style={{
+                  alignItems: 'center'
+                }}>
+                  <CardBody>
+                    <SocialMedia extendedmeta={{
+                      homepage: this.props.location.state.projectDetails.homepage,
+                      twitter_handle: this.props.location.state.projectDetails.twitterHandle,
+                      telegram_handle: this.props.location.state.projectDetails.telegramHandle,
+                      youtube_handle: this.props.location.state.projectDetails.youtubeHandle,
+                      facebook_handle: this.props.location.state.projectDetails.facebookHandle,
+                      discord_handle: this.props.location.state.projectDetails.discordHandle
+                    }} />
+                  </CardBody>
+                </Card>
               </Col>
             </Row>
-          </div>
-        }
-
+          </Col>
+        </Row>
       </Page>
     );
   }

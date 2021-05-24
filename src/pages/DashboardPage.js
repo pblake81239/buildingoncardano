@@ -143,7 +143,7 @@ class DashboardPage extends React.Component {
                           return (
                             <TableRow component={Link} to={{ pathname: '/projectdetails', state: { projectDetails: item } }}>
                               {/* <td scope="row">{item.id}</td> */}
-                              <td > {item.imageUrl != null && (<img
+                              <td > {item.imageUrl != null && item.imageUrl.includes('http') && (<img
                                 src={item.imageUrl}
                                 className="rounded"
                                 style={{ width: 100, height: 100 }}

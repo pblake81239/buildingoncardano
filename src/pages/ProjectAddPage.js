@@ -11,6 +11,7 @@ import { Card, Col, Row } from 'reactstrap';
 import { baseUrl, createProject } from '../assets/services';
 import { Link } from 'react-router-dom';
 import { Multiselect } from 'multiselect-react-dropdown';
+import { getUser, getPassword  } from 'utils/Common.js';
 
 const inputnamewidth = 2;
 const inputfieldwidth = 8;
@@ -83,7 +84,7 @@ class ProjectAddPage extends React.Component {
 
     const requestOptions = {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', 'password': getPassword()},
       body: JSON.stringify({
         name: this.state.name,
         type: tags,
@@ -100,6 +101,8 @@ class ProjectAddPage extends React.Component {
         youtubeHandle: this.state.youtubeHandle,
         facebookHandle: this.state.facebookHandle,
         discordHandle: this.state.discordHandle,
+
+        ownerEmail: getUser()
       })
     };
     fetch(baseUrl + createProject, requestOptions)

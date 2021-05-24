@@ -22,7 +22,7 @@ import { getColor } from 'utils/colors';
 import BeatLoader
   from "react-spinners/BeatLoader";
 import { css } from "@emotion/core";
-import { baseUrl, getProjectsByType } from '../assets/services';
+import { baseUrl, getProjectByOwner } from '../assets/services';
 import SocialMedia from '../components/SocialMedia';
 import CardanoImage from 'assets/img/cardanoIcon.png';
 import { Link } from 'react-router-dom';
@@ -44,7 +44,7 @@ const override = css`
   border-color: red;
 `;
 
-class ProjectsPage extends React.Component {
+class MyProjectsPage extends React.Component {
   state = {
     projects: [],
     loading: true
@@ -57,7 +57,7 @@ class ProjectsPage extends React.Component {
 
   async getProjectsByType() {
     try {
-      var response = await fetch(baseUrl + getProjectsByType + this.props.projectType + getUser(),{
+      var response = await fetch(baseUrl + getProjectByOwner  + getUser(),{
         method: 'GET', // *GET, POST, PUT, DELETE, etc.
         mode: 'cors', // no-cors, *cors, same-origin
         cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -112,4 +112,4 @@ class ProjectsPage extends React.Component {
     );
   }
 }
-export default ProjectsPage;
+export default MyProjectsPage;

@@ -1,8 +1,5 @@
-import logo200Image from 'assets/img/logo/logo_200.png';
 import sidebarBgImage from 'assets/img/sidebar/rsz_1sidebar-4.jpg';
-import SourceLink from 'components/SourceLink';
 import React from 'react';
-import { FaGithub } from 'react-icons/fa';
 import {
   MdAccountCircle,
   MdArrowDropDownCircle,
@@ -18,7 +15,8 @@ import {
   MdViewDay,
   MdViewList,
   MdKeyboardArrowRight,
-  MdAddToQueue
+  MdAddToQueue,
+  MdVerifiedUser
 
 } from 'react-icons/md';
 import { NavLink } from 'react-router-dom';
@@ -96,7 +94,9 @@ class Sidebar extends React.Component {
     if(user != null){
       this.setState({navItemsTop : [
         { to: '/', name: 'dashboard', exact: true, Icon: MdDashboard },
+        { to: '/myprojects', name: 'my projects', exact: true, Icon: MdVerifiedUser },
         { to: '/addproject', name: 'add project', exact: true, Icon: MdAddToQueue },
+
       ] })
       
     }else{

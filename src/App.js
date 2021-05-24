@@ -15,8 +15,9 @@ import DashboardPage from 'pages/DashboardPage';
 import ProjectsPage from 'pages/ProjectsPage';
 import ProjectDetailsPage from 'pages/ProjectDetailsPage';
 import ProjectAddPage from 'pages/ProjectAddPage';
+import MyProjectsPage from 'pages/MyProjectsPage';
 
-
+import { getUser  } from 'utils/Common.js';
 const getBasename = () => {
   return `/${process.env.PUBLIC_URL.split('/').pop()}`;
 };
@@ -79,6 +80,7 @@ class App extends React.Component {
                 <Route exact path="/nft" render={(props) => <ProjectsPage {...props}   projectType="nft"/>} />
 
                 <Route exact path="/projectdetails" render={(props) => <ProjectDetailsPage {...props} />} />
+                <Route exact path="/myprojects" render={(props) => <MyProjectsPage {...props} />} />
 
                 <Route exact path="/login-modal" component={AuthModalPage} />
                 <Route

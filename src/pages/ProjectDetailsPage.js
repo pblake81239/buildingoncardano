@@ -79,7 +79,7 @@ class ProjectDetailsPage extends React.Component {
                     <h4>{this.props.location.state.projectDetails.stage}</h4>
                     <br></br>
 
-                  
+
                   </Col>
                 </Row>
               </CardBody>
@@ -88,7 +88,7 @@ class ProjectDetailsPage extends React.Component {
               <CardBody>
                 <Row>
                   <Col>
-                    <h3>Tokenomics:</h3> 
+                    <h3>Tokenomics:</h3>
                     <br></br>
                     <h3>Token:</h3>
                     <h4>{this.props.location.state.projectDetails.tokenType}</h4>
@@ -97,23 +97,24 @@ class ProjectDetailsPage extends React.Component {
               </CardBody>
             </Card>
           </Col>
-          <Col md={3} sm={6} xs={12} className="mb-3">
-            <Row className="m-auto align-self-center">
+          <Col md={2} sm={6} xs={12} className="mb-3">
+            <Row style={{
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
               <Col>
-
-                <Card style={{
-                  alignItems: 'center'
-                }}>
-                  <CardBody>
-                    <ReactImageFallback
-                      src={this.props.location.state.projectDetails.imageUrl}
-                      width="140"
-                      height="140"
-                      fallbackImage={CardanoImage} />
-                    <h2>{this.props.location.state.projectDetails.name}</h2>
-                    <h4>{this.props.location.state.projectDetails.description}</h4>
-                    <h5>{this.props.location.state.projectDetails.type}</h5>
-                  </CardBody>
+                <Card body style={{
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+                  <ReactImageFallback
+                    src={this.props.location.state.projectDetails.imageUrl}
+                    width="140"
+                    height="140"
+                    fallbackImage={CardanoImage} />
+                  <h2>{this.props.location.state.projectDetails.name}</h2>
+                  <h4>{this.props.location.state.projectDetails.description}</h4>
+                  <h5>{this.props.location.state.projectDetails.type}</h5>
                 </Card>
                 <Card style={{
                   alignItems: 'center'

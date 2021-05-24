@@ -1,3 +1,23 @@
+.td h2 {
+  color: #222;
+  margin-top: -0.2em;
+  line-height: 1.4;
+  font-size: 1.2em;
+  font-weight: 900;
+  font-family: 'Montserrat', sans-serif;
+  transition: all ease-in 100ms;
+  text-transform: uppercase;
+}
+
+.td h4 {
+  color: rgb(71, 71, 71);
+  font-weight: 850;
+  font-size: 1.3em;
+  letter-spacing: 0.04em;
+  margin: 1.4em 0 0 0;
+}
+
+
 .card-img-left {
   border-radius: 0;
   border-top-left-radius: calc(.25rem - 1px);
@@ -22,6 +42,9 @@
   transition: all ease 200ms;
   
 }
+
+
+
 
 .card h2 {
   color: #222;

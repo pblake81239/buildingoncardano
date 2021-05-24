@@ -13,7 +13,8 @@ import BeatLoader
 import { css } from "@emotion/core";
 import { baseUrl, getAllProjects, getProjectsStats } from '../assets/services';
 import { Link } from 'react-router-dom';
-import { TableRow } from '@material-ui/core';
+import { TableRow, TableCell, TableHead, TableBody   } from '@material-ui/core';
+import "../styles/styles.css";
 
 const override = css`
   display: block;
@@ -86,33 +87,36 @@ class DashboardPage extends React.Component {
             />
           </Col>
         </Row>
-        <Row>
-          <Col lg="12" md="12" sm="12" xs="12">
-            <Card>
+        <Row style={{          
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+          <Col lg="9" md="9" sm="9" xs="9">
+            <Card >
               {/* <CardHeader>Projects</CardHeader> */}
               <CardBody>
                 {this.state.loading ? <div>Loading projects...<BeatLoader loading={this.state.loading} css={override} size={180} /></div>
                   :
                   <Table>
-                    <thead>
+                    <TableHead>
                       {this.state.smallScreen ?
-                        <tr>
+                        <TableRow >
                           {/* <th>#</th> */}
-                          <th>Project</th>
-                          <th>Type</th>
-                        </tr>
+                          <TableCell><h2>Project</h2></TableCell>
+                          <TableCell><h2>Type</h2></TableCell>
+                        </TableRow >
                         :
-                        <tr>
-                          {/* <th>#</th> */}
-                          <th>Project</th>
-                          <th>Type</th>
-                          <th>Token Type</th>
-                          <th>Ticker</th>
-                          <th>Stage</th>
-                        </tr>}
+                        <TableRow >
+                          <TableCell></TableCell>
+                          <TableCell padding="none"><h2>Project</h2></TableCell>
+                          <TableCell><h2>Type</h2></TableCell>
+                          <TableCell><h2>Token Type</h2></TableCell>
+                          <TableCell><h2>Ticker</h2></TableCell>
+                          <TableCell><h2>Stage</h2></TableCell>
+                        </TableRow >}
 
-                    </thead>
-                    <tbody>
+                    </TableHead>
+                    <TableBody >
 
                       {this.state.smallScreen ?
                         this.state.projects.map(function (item, index) {
@@ -120,8 +124,8 @@ class DashboardPage extends React.Component {
                             <TableRow component={Link} to={{ pathname: '/projectdetails', state: { projectDetails: item } }}>
 
                               {/* <td scope="row">{item.id}</td> */}
-                              <td >{item.name}</td>
-                              <td >{item.type}</td>
+                              <TableCell ><h4>{item.name}</h4></TableCell>
+                              <TableCell ><h4>{item.type}</h4></TableCell>
 
                             </TableRow >
                           )
@@ -130,40 +134,22 @@ class DashboardPage extends React.Component {
                         :
                         this.state.projects.map(function (item, index) {
                           return (
-                            <TableRow component={Link} to={{ pathname: '/projectdetails', state: { projectDetails: item } }}>
-                              {/* <td scope="row">{item.id}</td> */}
-                              <td > {item.imageUrl != null && item.imageUrl.includes('http') && (<img
+                            <TableRow component={Link} to={{ pathname: '/projectdetails', state: { projectDetails: item } }} >
+                              {/* <td scope="row">{item.id}</td> */}                              
+                              <TableCell><h4>{item.imageUrl != null && item.imageUrl.includes('http') && (<img
                                 src={item.imageUrl}
                                 className="rounded"
                                 style={{ width: 100, height: 100 }}
-                              />)} {item.name}</td>
-                              <td >{item.type}</td>
-                              <td>{item.tokenType}</td>
-                              <td>{item.ticker}</td>
-                              <td>{item.stage}</td>
+                              />)} </h4></TableCell>
+                              <TableCell><h4>{item.name}</h4></TableCell>
+                              <TableCell><h4>{item.type}</h4></TableCell>
+                              <TableCell><h4>{item.tokenType}</h4></TableCell>
+                              <TableCell><h4>{item.ticker}</h4></TableCell>
+                              <TableCell><h4>{item.stage}</h4></TableCell>
                             </TableRow >
                           )
                         })}
-
-                      {/* {this.state.projects.map(function (item, index) {
-                        return (
-                          <TableRow component={Link} to={{ pathname: '/projectdetails', state: { projectDetails: item } }}>
-
-                            {this.state.smallScreen ? <td scope="row">{item.id}</td> : <td scope="row">{item.id}</td>}
-
-                            <td>{item.tokenType}</td>
-                            <td>{item.ticker}</td>
-                            <td>{item.stage}</td>
-
-                          </TableRow >
-                        )
-                      })
-                      } */}
-
-
-
-
-                    </tbody>
+                    </TableBody >
                   </Table>
                 }
               </CardBody>

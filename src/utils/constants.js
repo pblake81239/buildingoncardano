@@ -11,7 +11,7 @@ export const NOTIFICATION_SYSTEM_STYLE = {
 
     success: {
       borderTop: 0,
-      backgroundColor: '#45b649',
+      backgroundColor: '#45a9b6',
       WebkitBoxShadow: 0,
       MozBoxShadow: 0,
       boxShadow: 0,
@@ -100,7 +100,7 @@ export const NOTIFICATION_SYSTEM_STYLE = {
     },
 
     success: {
-      backgroundColor: '#45b649',
+      backgroundColor: '#45a9b6',
       color: '#fff',
     },
 

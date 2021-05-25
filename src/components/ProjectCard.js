@@ -33,7 +33,7 @@ export default class ProjectCard extends React.Component {
 
     render() {
         return (
-            <div className="ProjectCard" style={{ height: '15rem', width: '25rem' }}>
+            <div className="ProjectCard" style={{ height: '20rem', width: '25rem' }}>
                 <Link to={{ pathname: '/projectdetails', state: { projectDetails: this.props.projectDetails } }}>
                     <div style={{paddingTop: 15, alignSelf: 'flex-start'}}>
                     <ReactImageFallback
@@ -41,7 +41,8 @@ export default class ProjectCard extends React.Component {
                         width="40"
                         height="70"
                         fallbackImage={CardanoImage} />
-                    <div className="ProjectCard-body">
+                        
+                    <div className="ProjectCard-body">                        
                         <h2>{this.props.projectDetails.name}</h2>
                         <h4>{this.props.projectDetails.description}</h4>
                         <h5>{this.props.projectDetails.type}</h5>

@@ -91,7 +91,7 @@ class DashboardPage extends React.Component {
           justifyContent: 'center',
           alignItems: 'center',
         }}>
-          <Col lg="9" md="9" sm="9" xs="9">
+          <Col lg="9" sm={6} sm={6}>
             <Card >
               {/* <CardHeader>Projects</CardHeader> */}
               <CardBody>

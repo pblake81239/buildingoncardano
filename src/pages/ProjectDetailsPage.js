@@ -24,6 +24,8 @@ import { css } from "@emotion/core";
 import ReactImageFallback from "react-image-fallback";
 import SocialMedia from '../components/SocialMedia';
 import CardanoImage from 'assets/img/cardanoIcon.png';
+import YoutubeEmbed from '../components/YoutubeEmbed';
+import { isEmpty } from 'utils/stringutil.js';
 
 const socialMediaProps = {
   twitter_handle: '@PoolShamrock',
@@ -65,15 +67,17 @@ class ProjectDetailsPage extends React.Component {
           style={{
             height: '100vh',
             justifyContent: 'center',
-            margin: '20px'
           }}>
-          <Col xl={6} lg={12} md={12}>
+          <Col xl={6} lg={12} md={12} sm={6}>
             <Card>
               <CardBody>
                 <Row>
                   <Col>
                     <h3>Description:</h3>
                     <h4>{this.props.location.state.projectDetails.description}</h4>
+                    <br></br>
+                    {!isEmpty(this.props.location.state.projectDetails.youTubeEmbedId) && (
+                      <YoutubeEmbed embedId={this.props.location.state.projectDetails.youTubeEmbedId} />)}
                     <br></br>
                     <h3>Development Stage:</h3>
                     <h4>{this.props.location.state.projectDetails.stage}</h4>
@@ -84,18 +88,19 @@ class ProjectDetailsPage extends React.Component {
                 </Row>
               </CardBody>
             </Card>
-            <Card>
-              <CardBody>
-                <Row>
-                  <Col>
-                    <h3>Tokenomics:</h3>
-                    <br></br>
-                    <h3>Token:</h3>
-                    <h4>{this.props.location.state.projectDetails.tokenType}</h4>
-                  </Col>
-                </Row>
-              </CardBody>
-            </Card>
+            {!isEmpty(this.props.location.state.projectDetails.tokenType) && (
+              <Card>
+                <CardBody>
+                  <Row>
+                    <Col>
+                      <h3>Tokenomics:</h3>
+                      <br></br>
+                      <h3>Token:</h3>
+                      <h4>{this.props.location.state.projectDetails.tokenType}</h4>
+                    </Col>
+                  </Row>
+                </CardBody>
+              </Card>)}
           </Col>
           <Col md={2} sm={6} xs={12} className="mb-3">
             <Row style={{
@@ -104,16 +109,17 @@ class ProjectDetailsPage extends React.Component {
             }}>
               <Col>
                 <Card body style={{
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}>
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}>
                   <ReactImageFallback
                     src={this.props.location.state.projectDetails.imageUrl}
                     width="140"
                     height="140"
                     fallbackImage={CardanoImage} />
+                  <br></br>
                   <h2>{this.props.location.state.projectDetails.name}</h2>
-                  <h4>{this.props.location.state.projectDetails.description}</h4>
+                  <h4>{this.props.location.state.projectDetails.shortDescription}</h4>
                   <h5>{this.props.location.state.projectDetails.type}</h5>
                 </Card>
                 <Card style={{
